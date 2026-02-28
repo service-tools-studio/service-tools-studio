@@ -6,7 +6,7 @@ export default function AboutPage() {
     <>
       <PageTopSection
         slug="about"
-        title="Jasmin Bergsgaard"
+        title="Jasmin"
         description="A bit about me and background in web development and web-based software engineering."
       />
       <div className='py-5 px-10'>

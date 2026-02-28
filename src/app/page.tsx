@@ -64,11 +64,12 @@ export default function HomePage() {
 
           </div>
 
-          <a
-            href="#about"
+          <div className="mx-auto max-w-3xl px-4">
+            <a
+              href="#about"
             aria-label="Go to About Service Tools Studio section"
             className={[
-              "group my-6 block rounded-2xl bg-white p-4 mx-10 shadow-sm",
+              "group my-6 block rounded-2xl bg-white p-4 shadow-sm",
               "transition-all duration-300",
               "hover:-translate-y-0.5 hover:border-accent/25 hover:bg-accent/10 hover:shadow-sm",
               "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
@@ -85,10 +86,11 @@ export default function HomePage() {
               />
 
               <p className="text-sm leading-snug text-stone-600">
-                <span className="font-semibold text-ink">I'm Jasmin Bergsgaard, owner and founder of Service Tools Studio.</span> — I'm a Portland-based developer with 7 years of experience building production websites. I focus on clean code, clear structure, and sites that are fast and easy to maintain. I love turning ideas into something real that works for your business.
+                <span className="font-semibold text-ink">I'm Jasmin, owner and founder of Service Tools Studio.</span> — I'm a Portland-based developer with 7 years of experience building production websites. I focus on clean code, clear structure, and sites that are fast and easy to maintain. I love turning ideas into something real that works for your business.
               </p>
             </div>
-          </a>
+            </a>
+          </div>
 
         </section>
 
