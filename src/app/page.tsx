@@ -86,7 +86,7 @@ export default function HomePage() {
                 />
 
                 <p className="text-sm leading-snug text-stone-600">
-                  <span className="font-semibold text-ink">I'm Jasmin, owner and founder of Service Tools Studio.</span> — I'm a Portland-based developer with 7 years of experience building production websites. I focus on clean code, clear structure, and sites that are fast and easy to maintain. I love turning ideas into something real that works for your business.
+                  <span className="font-semibold text-ink">I'm Jasmin, owner and founder of Service Tools Studio.</span> — I'm a Portland-based developer with 7 years of experience building production websites. By day, I work for Nike. On the side, I build custom websites from scratch. I love turning ideas into something real that works for your business.
                 </p>
               </div>
             </a>
