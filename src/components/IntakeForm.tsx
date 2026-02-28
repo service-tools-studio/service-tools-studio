@@ -10,7 +10,7 @@ export default function IntakeForm() {
     website: '',
     needs: '',
     timeline: '',
-    projectType: '',
+    projectType: 'One-page Site / Landing Page (typically $1,000–$1,500)',
     openToRebuild: 'yes',
   });
 
