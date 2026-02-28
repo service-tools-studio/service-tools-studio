@@ -46,7 +46,7 @@ export default function IntakeForm() {
 
   return (<>
     <p className="mb-4 text-sm text-stone-600">
-      Share a few details and we&apos;ll follow up with a simple next step. No pressure, no tech jargon—we&apos;ll explain everything. This form doesn&apos;t lock you into anything; it just starts the conversation.
+      Share a few details and we&apos;ll follow up with a simple next step. No pressure. This form doesn&apos;t lock you into anything, it just starts the conversation.
     </p>
 
     <form
