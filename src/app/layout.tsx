@@ -17,6 +17,17 @@ export const metadata: Metadata = {
   title: "Service Tools Studio — Custom Websites for Service Businesses | Portland, OR",
   description:
     "Portland-based, female-owned web studio. We build clear, professional websites for service business owners—no tech experience needed. Local to Oregon, working with clients worldwide.",
+  openGraph: {
+    title: "Service Tools Studio — Custom Websites for Service Businesses | Portland, OR",
+    description:
+      "Portland-based, female-owned web studio. We build clear, professional websites for service business owners—no tech experience needed. Local to Oregon, working with clients worldwide.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Service Tools Studio — Custom Websites for Service Businesses | Portland, OR",
+    description:
+      "Portland-based, female-owned web studio. We build clear, professional websites for service business owners—no tech experience needed.",
+  },
 };
 
 export default function RootLayout({
