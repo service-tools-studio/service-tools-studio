@@ -8,7 +8,7 @@ export const site = {
     },
     intake: {
       label: "Project intake form",
-      href: "#intake",
+      href: "/intake",
     },
   },
 

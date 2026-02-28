@@ -6,7 +6,7 @@ export default function ServicesPage() {
     <>
       <PageTopSection
         slug="Services"
-        title="What I build"
+        title="What we build"
         description="A mix of simple landing pages, structured builds, and fully customized builds."
       />
       <div className='px-10'>

@@ -103,7 +103,7 @@ export default function Process() {
 
   return (
     <>
-      <div className="grid gap-6 md:grid-cols-4">
+      <div className="grid gap-6 lg:grid-cols-4">
         {STEPS.map((step, idx) => {
           const isOpen = openIdx === idx;
 
@@ -186,7 +186,7 @@ export default function Process() {
 
       <div className="mt-10 rounded-2xl bg-accent-50 p-6 text-center">
         <p className="text-sm text-stone-700">
-          No tech overwhelm. No guessing how to hire a developer. We guide you step by step—Portland to your door, or anywhere in the world.
+          No tech overwhelm. No endless revisions. Just a clean, easy build process from start to finish.
         </p>
       </div>
     </>

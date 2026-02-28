@@ -4,11 +4,11 @@ import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 
 const navItems = [
-  { href: '#services', label: 'Services' },
-  { href: '#projects', label: 'Our work' },
-  { href: '#process', label: 'How it works' },
-  { href: '#about', label: 'About us' },
-  { href: '#intake', label: 'Get started' },
+  { href: '/services', label: 'Services' },
+  { href: '/work', label: 'Our work' },
+  { href: '/process', label: 'How it works' },
+  { href: '/about', label: 'About us' },
+  { href: '/intake', label: 'Get started' },
 ]
 
 export default function SiteHeader() {
@@ -60,8 +60,8 @@ export default function SiteHeader() {
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden sm:flex gap-6 text-sm text-stone-600">
-            {navItems.map((item) => (
+          <nav className="hidden sm:flex items-center gap-6 text-sm text-stone-600">
+            {navItems.slice(0, -1).map((item) => (
               <a
                 href={item.href}
                 key={item.label}
@@ -78,6 +78,13 @@ export default function SiteHeader() {
                 {item.label}
               </a>
             ))}
+            <a
+              href={navItems[navItems.length - 1].href}
+              className="sparkle-btn relative inline-flex items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-btn-primary"
+            >
+              <span className="sparkle-layer" aria-hidden />
+              <span className="relative z-10">{navItems[navItems.length - 1].label}</span>
+            </a>
           </nav>
 
           {/* Hamburger (mobile only) */}
@@ -104,7 +111,7 @@ export default function SiteHeader() {
               {/* Menu */}
               <div className="absolute top-full left-0 right-0 z-50 bg-white shadow-md animate-fade-in-down">
                 <nav className="flex flex-col p-4 gap-3 text-sm text-stone-700">
-                  {navItems.map((item) => (
+                  {navItems.slice(0, -1).map((item) => (
                     <a
                       key={item.href}
                       href={item.href}
@@ -120,6 +127,14 @@ export default function SiteHeader() {
                       {item.label}
                     </a>
                   ))}
+                  <a
+                    href={navItems[navItems.length - 1].href}
+                    onClick={() => setMenuOpen(false)}
+                    className="sparkle-btn relative mt-1 inline-flex items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500"
+                  >
+                    <span className="sparkle-layer" aria-hidden />
+                    <span className="relative z-10">{navItems[navItems.length - 1].label}</span>
+                  </a>
                 </nav>
               </div>
             </>

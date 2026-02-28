@@ -7,7 +7,7 @@ export default function IntakePage() {
       <PageTopSection
         slug="Intake"
         title="Ready to get started?"
-        description="Please fill out the form below to help me understand your project needs."
+        description="Please fill out the form below to help us understand your project needs and get started on building your website."
       />
       <div className='p-10'>
         <IntakeForm />

@@ -5,8 +5,8 @@ export default function ProcessPage() {
     <>
       <PageTopSection
         slug="Process"
-        title="How It Works"
-        description="A mix of fully custom builds and structured builds. Click into any project to see the details, then open the live site."
+        title="How it works"
+        description="A simple, straightforward process for building your website."
       />
       <div className="pb-10 px-6 md:px-10">
         <Process />

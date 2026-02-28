@@ -10,7 +10,7 @@ export default function PageTopSection({
   description,
 }: PageTopSectionProps) {
   return (
-    <section className="bg-gradient-to-b from-accent-50 to-accent-100 mb-10">
+    <section className="bg-[#f3ecfd] mb-10">
       <div className="mx-auto max-w-5xl px-4 py-14 sm:py-18">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-700 shimmer-text">
           {slug}
