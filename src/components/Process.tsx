@@ -186,7 +186,7 @@ export default function Process() {
 
       <div className="mt-10 rounded-2xl bg-accent-50 p-6 text-center">
         <p className="text-sm text-stone-700">
-          No tech overwhelm. No endless revisions. Just a clean, easy build process from start to finish.
+          Not techy? No worries. We'll handle everything from design to launch. It's all done for you.
         </p>
       </div>
     </>

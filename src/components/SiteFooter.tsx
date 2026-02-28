@@ -13,9 +13,9 @@ export const site = {
   },
 
   footer: {
-    finePrint: `© ${new Date().getFullYear()} Service Tools Studio. Portland, OR · Female-owned · Serving clients locally and worldwide.`,
+    finePrint: `© ${new Date().getFullYear()} Service Tools Studio.`,
     note:
-      "We build websites for service business owners—no tech experience required. Local to Portland; we work with clients everywhere.",
+      "We build websites for service business owners.",
   },
 } as const;
 
@@ -24,32 +24,6 @@ export default function SiteFooter() {
   return (
     <footer className="bg-bg">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
-        {/* Trust badges */}
-        <div className="mb-8 flex flex-col gap-4 sm:gap-5">
-          {/* In-person meeting — star-shaped hero badge */}
-          <div
-            className="footer-in-person-star mx-auto flex max-w-md flex-col items-center justify-center gap-2 bg-accent-50 px-6 py-6 sm:px-8 sm:py-8 text-center shadow-[0_0_0_2px_rgba(222,71,163,0.35)] drop-shadow-md"
-            role="img"
-            aria-label="Optional in-person website planning in Portland"
-          >
-            <span className="text-2xl sm:text-3xl" aria-hidden>⭐</span>
-            <p className="text-sm font-bold text-accent-700 sm:text-base">
-              Optional in-person planning in Portland
-            </p>
-            <p className="text-xs text-accent-700/90 sm:text-sm leading-snug">
-              Coffee shop, co-working space, or wherever you feel comfortable — your spot or mine.
-            </p>
-          </div>
-          {/* Supporting badges */}
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-50 px-3 py-1.5 text-xs font-semibold text-accent-700">
-              <span aria-hidden>📍</span> Portland, OR local
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-50 px-3 py-1.5 text-xs font-semibold text-accent-700">
-              <span aria-hidden>♀</span> Female-owned
-            </span>
-          </div>
-        </div>
 
         {/* CTA block */}
         <div className="mb-10 rounded-3xl bg-muted/40 p-6 sm:p-8">
@@ -96,6 +70,26 @@ export default function SiteFooter() {
                 {site.cta.intake.label}
               </a>
             </div>
+          </div>
+        </div>
+
+        {/* Trust badges */}
+        <div className="mb-8 flex flex-col gap-4 sm:gap-5">
+          {/* In-person meeting — star-shaped hero badge */}
+          <div
+            className="footer-in-person-star mx-auto flex max-w-md flex-col items-center justify-center gap-2 bg-accent-50 px-6 py-6 sm:px-8 sm:py-8 text-center shadow-[0_0_0_2px_rgba(222,71,163,0.35)] drop-shadow-md"
+            role="img"
+            aria-label="Optional in-person website planning in Portland"
+          >
+            <span className="text-2xl sm:text-3xl" aria-hidden>☕️</span>
+            <p className="text-sm font-bold text-accent-700 sm:text-base">
+              Optional in-person planning in Portland
+            </p>
+            <p className="text-xs text-accent-700/90 sm:text-sm leading-snug">
+              Sick of Zoom meetings? Are you the kind of person who prefers to meet in person? (Me too!)
+              Coffee shop, co-working space, or wherever you feel comfortable — your spot or mine.
+              Just let me know on your <a href="/intake" className="text-accent-700 underline">intake form</a> and we'll make it happen.
+            </p>
           </div>
         </div>
 
