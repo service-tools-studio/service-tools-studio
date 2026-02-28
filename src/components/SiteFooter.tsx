@@ -41,7 +41,7 @@ export default function SiteFooter() {
             </p>
           </div>
           {/* Supporting badges */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-50 px-3 py-1.5 text-xs font-semibold text-accent-700">
               <span aria-hidden>📍</span> Portland, OR local
             </span>

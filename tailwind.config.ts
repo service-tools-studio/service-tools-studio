@@ -20,6 +20,7 @@ export default {
           700: "#DE47A3",
           DEFAULT: "#DE47A3",
         },
+        lavender: "rgb(243 236 253 / <alpha-value>)",
       },
       boxShadow: {
         soft: "0 10px 25px rgba(0,0,0,0.06)",

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --color-lavender: #f3ecfd;
+}
+
 :root {
   --text-primary: #4C1462;
   --btn-primary: #DE47A3;
@@ -36,22 +40,6 @@ body {
 
 .animate-emoji-slide-in {
   animation: emoji-slide-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-/* Star-shaped in-person badge (8-point star / starburst) */
-.footer-in-person-star {
-  clip-path: polygon(
-    50% 0%,
-    61% 20%,
-    100% 20%,
-    68% 42%,
-    85% 85%,
-    50% 62%,
-    15% 85%,
-    32% 42%,
-    0% 20%,
-    39% 20%
-  );
 }
 
 @layer utilities {

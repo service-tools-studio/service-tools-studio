@@ -22,7 +22,7 @@ export default function WorkDetailPage() {
   return (
     <main className="min-h-screen bg-accent-50 text-ink">
       {/* Header */}
-      <section className="bg-gradient-to-b from-accent-50 to-accent-100 mb-10">
+      <section className="bg-lavender from-accent-50 to-accent-100 mb-10">
         <div className="mx-auto max-w-5xl px-4 py-14 sm:py-18">
           <Link
             href="/work"
