@@ -47,7 +47,7 @@ export default function HomePage() {
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href="#intake"
+                  href="/intake"
                   className="sparkle-btn inline-flex relative overflow-hidden items-center justify-center rounded-full px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500"
                 >
                   <span className="sparkle-layer" />
@@ -67,28 +67,28 @@ export default function HomePage() {
           <div className="mx-auto max-w-3xl px-4">
             <a
               href="#about"
-            aria-label="Go to About Service Tools Studio section"
-            className={[
-              "group my-6 block rounded-2xl bg-white p-4 shadow-sm",
-              "transition-all duration-300",
-              "hover:-translate-y-0.5 hover:border-accent/25 hover:bg-accent/10 hover:shadow-sm",
-              "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            ].join(" ")}
-          >
-            <div className="flex items-start gap-4">
-              <Image
-                src="/images/professional-headshot.jpg"
-                alt="Jasmin, founder of Service Tools Studio"
-                width={80}
-                height={80}
-                className="h-20 w-20 shrink-0 rounded-full border border-stone-200 object-cover"
-                priority={false}
-              />
+              aria-label="Go to About Service Tools Studio section"
+              className={[
+                "group my-6 block rounded-2xl bg-white p-4 shadow-sm",
+                "transition-all duration-300",
+                "hover:-translate-y-0.5 hover:border-accent/25 hover:bg-accent/10 hover:shadow-sm",
+                "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              ].join(" ")}
+            >
+              <div className="flex items-start gap-4">
+                <Image
+                  src="/images/professional-headshot.jpg"
+                  alt="Jasmin, founder of Service Tools Studio"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 shrink-0 rounded-full border border-stone-200 object-cover"
+                  priority={false}
+                />
 
-              <p className="text-sm leading-snug text-stone-600">
-                <span className="font-semibold text-ink">I'm Jasmin, owner and founder of Service Tools Studio.</span> — I'm a Portland-based developer with 7 years of experience building production websites. I focus on clean code, clear structure, and sites that are fast and easy to maintain. I love turning ideas into something real that works for your business.
-              </p>
-            </div>
+                <p className="text-sm leading-snug text-stone-600">
+                  <span className="font-semibold text-ink">I'm Jasmin, owner and founder of Service Tools Studio.</span> — I'm a Portland-based developer with 7 years of experience building production websites. I focus on clean code, clear structure, and sites that are fast and easy to maintain. I love turning ideas into something real that works for your business.
+                </p>
+              </div>
             </a>
           </div>
 
