@@ -11,7 +11,7 @@ export default function IntakeForm() {
     needs: '',
     timeline: '',
     projectType: 'One-page Site / Landing Page (typically $1,000–$1,500)',
-    openToRebuild: 'yes',
+    // openToRebuild: 'yes',
   });
 
 
@@ -36,7 +36,7 @@ export default function IntakeForm() {
         `${form.needs}`,
         '',
         `Timeline: ${form.timeline || 'Not specified'}`,
-        `Open to full rebuild: ${form.openToRebuild}`,
+        // `Open to full rebuild: ${form.openToRebuild}`,
         `Project Type & budget: ${form.projectType || 'Not specified'}`,
       ].join('\n')
     );
@@ -140,7 +140,7 @@ export default function IntakeForm() {
         </label>
       </div>
 
-      <div className="md:col-span-1">
+      {/* <div className="md:col-span-1">
         <span className="block text-xs font-medium text-ink/90">
           Open to a full rebuild if that&apos;s best?
         </span>
@@ -168,7 +168,7 @@ export default function IntakeForm() {
             Maybe
           </label>
         </div>
-      </div>
+      </div> */}
 
       <div className="md:col-span-1">
         <label className="block text-xs font-medium text-ink/90">
