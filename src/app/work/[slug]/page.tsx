@@ -87,9 +87,10 @@ export default function WorkDetailPage() {
             href={project.liveUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-full bg-btn-primary px-5 py-2.5 text-sm font-medium text-white hover:opacity-90 transition"
+            className="sparkle-btn relative inline-flex items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500"
           >
-            Visit live site ↗
+            <span className="sparkle-layer" aria-hidden />
+            <span className="relative z-10">Visit live site ↗</span>
           </a>
 
           <Link
