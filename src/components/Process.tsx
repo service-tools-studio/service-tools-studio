@@ -14,7 +14,7 @@ const STEPS: Step[] = [
   {
     step: '01',
     title: 'Quick intro & fit check',
-    text: "You tell us what you want your site to do—no tech speak required. We'll listen and ask simple questions.",
+    text: "You tell us what you want your site to do—no tech experience required. We'll listen and ask simple questions.",
     details: [
       'We’ll do a quick call or async questionnaire—whatever is easiest.',
       'You’ll share your goals, what you’re offering, and who the site is for.',

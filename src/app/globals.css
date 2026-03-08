@@ -15,6 +15,10 @@
   --accent: 38 92% 50%;
 }
 
+.bg-btn-primary {
+  background-color: var(--btn-primary);
+}
+
 html,
 body {
   height: 100%;

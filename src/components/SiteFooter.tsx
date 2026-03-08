@@ -13,7 +13,7 @@ export const site = {
   },
 
   footer: {
-    finePrint: `© ${new Date().getFullYear()} Service Tools Studio.`,
+    finePrint: `© ${new Date().getFullYear()} Service Tools Studio LLC`,
     note:
       "We build websites for service business owners.",
   },
