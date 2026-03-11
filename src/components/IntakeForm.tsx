@@ -10,7 +10,7 @@ export default function IntakeForm() {
     website: '',
     needs: '',
     timeline: '',
-    projectType: 'One-page Site / Landing Page (typically $1,000–$1,500)',
+    projectType: 'Launch Site (typically $1,000–$1,500)',
     // openToRebuild: 'yes',
   });
 
@@ -179,17 +179,17 @@ export default function IntakeForm() {
             onChange={handleChange}
             className="mt-1 w-full rounded-xl border border-stone-300 bg-white px-3 py-2 text-sm text-ink shadow-sm focus:border-stone-500 focus:outline-none focus:ring-1 focus:ring-stone-500"
           >
-            <option value="one-pager">One-page Site / Landing Page (typically $1,000–$1,500)</option>
-            <option value="structured-build">Structured Build (typically $4,000–$6,000)</option>
-            <option value="custom-design">Custom Design (starting at $12,000)</option>
+            <option value="one-pager">Launch Site (typically $1,000–$1,500)</option>
+            <option value="structured-build">Business Site (typically $4,000–$8,000)</option>
+            <option value="custom-design">Custom (starting at $12,000)</option>
           </select>
         </label>
 
         <div className="mt-2 text-xs text-stone-500">
           <ul>
-            <li>Landing page = focused page built around one clear CTA.</li>
-            <li>Structured build = faster build using a guided layout system.</li>
-            <li>Custom design = fully tailored visual system and features from scratch.</li>
+            <li>Launch Site = focused page built around one clear CTA.</li>
+            <li>Business Site = faster build using a guided layout system.</li>
+            <li>Custom = fully tailored visual system and features from scratch.</li>
           </ul>
         </div>
       </div>

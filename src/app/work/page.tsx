@@ -36,7 +36,7 @@ export default function WorkIndexPage() {
   return (
     <main className="min-h-screen bg-accent-50 text-ink">
       <PageTopSection
-        slug="My work"
+        slug="Our work"
         title="Projects & samples"
         description="View the projects below by category. Click into any project to see the details, then open the live site."
       />

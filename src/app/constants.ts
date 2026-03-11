@@ -1,7 +1,7 @@
 import { Project } from '../types';
 export const CONTACT_EMAIL = 'service.tools.studio@gmail.com';
 export const CALENDLY_URL =
-  'https://calendly.com/service-tools-studio/15min';
+  'https://calendly.com/service-tools-studio/15-minute-website-intro-call';
 export const GOLDEN_HOUR_URL = 'https://goldenhourcleaningco.com/residential';
 export const TESS_SITE_URL = 'https://theconsciousmvt.com';
 export const HAW_URL = 'https://structured-build-haw.vercel.app/';
@@ -31,7 +31,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'The Conscious Movement',
     slug: 'the-conscious-mvt',
-    category: 'custom',
+    category: 'structured',
     subtitle: 'Sound healing, private sessions, and in-person events',
     liveUrl: TESS_SITE_URL,
     previewTitle: 'The Conscious Movement sound healing website preview',
@@ -40,7 +40,7 @@ export const PROJECTS: Project[] = [
       'The experience guides visitors from resonance to action with clear offerings, gentle storytelling, and an intuitive layout—making it easy to explore sessions, understand what to expect, and sign up with confidence.',
     ],
     pills: [
-      'Custom design & layout',
+      'Simple, clean design & layout',
       'Event & session-focused UX',
       'Calm visual system',
       'Mobile-first build',
