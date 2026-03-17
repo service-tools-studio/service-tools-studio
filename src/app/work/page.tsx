@@ -23,10 +23,10 @@ export default function WorkIndexPage() {
   const businessProjects = PROJECTS.filter((p) => p.category === 'structured').sort(sortByTitle);
   const onePageProjects = PROJECTS.filter((p) => p.category === 'one-pager').sort(sortByTitle);
 
-  const sections: { id: (typeof SECTION_IDS)[number]; title: string; projects: Project[]; emptyMessage: string }[] = [
-    { id: 'one-pager-projects', title: 'Launch Sites', projects: onePageProjects, emptyMessage: 'Focused site samples coming soon.' },
-    { id: 'business-projects', title: 'Business Sites', projects: businessProjects, emptyMessage: 'Structured build samples coming soon.' },
-    { id: 'custom-projects', title: 'Custom Builds', projects: customProjects, emptyMessage: 'Custom projects coming soon.' },
+  const sections: { id: (typeof SECTION_IDS)[number]; title: string; blurb: string; projects: Project[]; emptyMessage: string }[] = [
+    { id: 'one-pager-projects', title: 'Launch Sites', blurb: 'Single-page sites for one offer, event, or lead capture.', projects: onePageProjects, emptyMessage: 'Focused site samples coming soon.' },
+    { id: 'business-projects', title: 'Business Sites', blurb: 'Multi-page sites built on a proven layout system.', projects: businessProjects, emptyMessage: 'Structured build samples coming soon.' },
+    { id: 'custom-projects', title: 'Custom Builds', blurb: 'Fully tailored sites with custom design and UX.', projects: customProjects, emptyMessage: 'Custom projects coming soon.' },
   ];
 
   function toggle(id: string) {
@@ -42,7 +42,7 @@ export default function WorkIndexPage() {
       />
 
       <div className="mx-auto max-w-5xl px-4 pb-20">
-        {sections.map(({ id, title, projects, emptyMessage }) => {
+        {sections.map(({ id, title, blurb, projects, emptyMessage }) => {
           const isOpen = openSections[id] ?? false;
           return (
             <section key={id} id={id} className="scroll-mt-20 mb-5">
@@ -53,9 +53,14 @@ export default function WorkIndexPage() {
                 aria-expanded={isOpen}
                 aria-controls={`${id}-content`}
               >
-                <h2 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-                  {title}
-                </h2>
+                <div className="min-w-0">
+                  <h2 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+                    {title}
+                  </h2>
+                  <p className="mt-0.5 text-sm text-stone-500">
+                    {blurb}
+                  </p>
+                </div>
                 <span
                   className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-lg text-white shadow-sm transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                   style={{ backgroundColor: 'var(--btn-primary)' }}
