@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import ProjectCard from '@/components/ProjectCard';
 import { PROJECTS } from '@/app/constants';
 import { Project } from '@/types';
 import PageTopSection from '@/components/PageTopSection';
+import ProjectCarousel from '@/components/ProjectCarousel';
 
 function sortByTitle(a: Project, b: Project) {
   return a.title.localeCompare(b.title);
@@ -24,9 +24,9 @@ export default function WorkIndexPage() {
   const onePageProjects = PROJECTS.filter((p) => p.category === 'one-pager').sort(sortByTitle);
 
   const sections: { id: (typeof SECTION_IDS)[number]; title: string; blurb: string; projects: Project[]; emptyMessage: string }[] = [
-    { id: 'one-pager-projects', title: 'Launch Sites', blurb: 'Single-page sites for one offer, event, or lead capture.', projects: onePageProjects, emptyMessage: 'Focused site samples coming soon.' },
-    { id: 'business-projects', title: 'Business Sites', blurb: 'Multi-page sites built on a proven layout system.', projects: businessProjects, emptyMessage: 'Structured build samples coming soon.' },
     { id: 'custom-projects', title: 'Custom Builds', blurb: 'Fully tailored sites with custom design and UX.', projects: customProjects, emptyMessage: 'Custom projects coming soon.' },
+    { id: 'business-projects', title: 'Business Sites', blurb: 'Multi-page sites built on a proven layout system.', projects: businessProjects, emptyMessage: 'Structured build samples coming soon.' },
+    { id: 'one-pager-projects', title: 'Launch Sites', blurb: 'Single-page sites for one offer, event, or lead capture.', projects: onePageProjects, emptyMessage: 'Focused site samples coming soon.' },
   ];
 
   function toggle(id: string) {
@@ -62,11 +62,11 @@ export default function WorkIndexPage() {
                   </p>
                 </div>
                 <span
-                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-lg text-white shadow-sm transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-lg text-white shadow-sm transition-transform duration-200"
                   style={{ backgroundColor: 'var(--btn-primary)' }}
                   aria-hidden
                 >
-                  ▾
+                  {isOpen ? '×' : '+'}
                 </span>
               </button>
               <div
@@ -80,22 +80,7 @@ export default function WorkIndexPage() {
                         {emptyMessage}
                       </div>
                     ) : (
-                      projects.map((project) => (
-                        <ProjectCard
-                          key={project.slug}
-                          project={{
-                            title: project.title,
-                            subtitle: project.subtitle,
-                            liveUrl: project.liveUrl,
-                            previewTitle: project.previewTitle,
-                            description: project.description,
-                            pills: project.pills,
-                            category: project.category,
-                            slug: project.slug,
-                          }}
-                          href={`/work/${project.slug}`}
-                        />
-                      ))
+                      <ProjectCarousel projects={projects} />
                     )}
                   </div>
                 </div>

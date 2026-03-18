@@ -63,7 +63,7 @@ export default function IframePreview({
 
   return (
     <>
-      <div className="mx-auto w-full max-w-[520px] min-w-0 overflow-hidden px-4 sm:px-0 pb-10">
+      <div className="mx-auto w-full max-w-[520px] min-w-0 overflow-hidden px-0 pb-0">
         <div className="overflow-hidden rounded-3xl bg-white/90 shadow-sm backdrop-blur">
           {/* Chrome bar */}
           <div className="relative z-30 border-b border-stone-200 bg-white/90 px-3 py-2 backdrop-blur">
