@@ -167,16 +167,7 @@ export default function Process() {
                 <span
                   className="sparkle-btn inline-flex items-center justify-center gap-1.5 rounded-full bg-stone-900 px-4 py-2 text-xs font-medium text-stone-50 transition hover:bg-stone-800"
                 >
-                  {isOpen ? 'Hide details' : 'Details'}
-                  <span
-                    className={[
-                      'inline-block text-[10px] transition-transform duration-300',
-                      isOpen ? 'rotate-180' : '',
-                    ].join(' ')}
-                    aria-hidden
-                  >
-                    ▾
-                  </span>
+                  {isOpen ? 'x' : '+'}
                 </span>
               </div>
             </button>

@@ -8,11 +8,13 @@ export default function IframePreview({
   title,
   detailsHref,
   variant = 'desktop',
+  onInteractiveChange,
 }: {
   url: string;
   title: string;
   detailsHref?: string;
   variant?: 'desktop' | 'mobile';
+  onInteractiveChange?: (interactive: boolean) => void;
 }) {
   const [interactive, setInteractive] = useState(false);
 
@@ -27,6 +29,11 @@ export default function IframePreview({
     if (interactive) window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [interactive]);
+
+  useEffect(() => {
+    onInteractiveChange?.(interactive);
+    return () => onInteractiveChange?.(false);
+  }, [interactive, onInteractiveChange]);
 
   useEffect(() => {
     if (!viewportRef.current) return;

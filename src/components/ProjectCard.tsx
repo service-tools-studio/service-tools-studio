@@ -5,9 +5,11 @@ import { Project } from '@/types';
 export default function ProjectCard({
   project,
   href,
+  onInteractiveChange,
 }: {
   project: Project;
   href: string;
+  onInteractiveChange?: (interactive: boolean) => void;
 }) {
   return (
     <div className="rounded-3xl mb-8 bg-white shadow-sm overflow-hidden">
@@ -78,7 +80,12 @@ export default function ProjectCard({
             Live preview
           </div>
 
-          <IframePreview url={project.liveUrl} title={project.previewTitle} detailsHref={project.slug} />
+          <IframePreview
+            url={project.liveUrl}
+            title={project.previewTitle}
+            detailsHref={project.slug}
+            onInteractiveChange={onInteractiveChange}
+          />
         </div>
       </div>
     </div>

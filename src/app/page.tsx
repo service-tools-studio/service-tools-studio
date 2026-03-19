@@ -150,13 +150,7 @@ export default function HomePage() {
 
         {/* Projects */}
         <Section id="projects" title="Sites we’ve built">
-          {projects.map((p) => (
-            <ProjectCard
-              key={p.slug}
-              project={p}
-              href={`/work/${p.slug}`}
-            />
-          ))}
+          <ProjectCardsCarousel projects={projects} />
         </Section>
 
         {/* Process */}
