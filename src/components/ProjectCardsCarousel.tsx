@@ -18,6 +18,7 @@ export default function ProjectCardsCarousel({ projects }: { projects: Project[]
   const [interactivePaused, setInteractivePaused] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const wheelLock = useRef(false);
+  const wheelReleaseTimerRef = useRef<number | null>(null);
   const resumeTimerRef = useRef<number | null>(null);
   const interactiveSlidesRef = useRef<Set<number>>(new Set());
 
@@ -55,6 +56,9 @@ export default function ProjectCardsCarousel({ projects }: { projects: Project[]
       if (resumeTimerRef.current != null) {
         window.clearTimeout(resumeTimerRef.current);
       }
+      if (wheelReleaseTimerRef.current != null) {
+        window.clearTimeout(wheelReleaseTimerRef.current);
+      }
     };
   }, []);
 
@@ -88,16 +92,23 @@ export default function ProjectCardsCarousel({ projects }: { projects: Project[]
     if (Math.abs(delta) < 8) return;
 
     e.preventDefault();
-    if (wheelLock.current) return;
-
-    wheelLock.current = true;
     pauseAutoAdvance();
-    if (delta > 0) goNext();
-    else goPrev();
 
-    window.setTimeout(() => {
+    // Treat one wheel/trackpad gesture as one slide move.
+    if (!wheelLock.current) {
+      wheelLock.current = true;
+      if (delta > 0) goNext();
+      else goPrev();
+    }
+
+    // Keep lock active while wheel events continue (momentum/inertia included).
+    if (wheelReleaseTimerRef.current != null) {
+      window.clearTimeout(wheelReleaseTimerRef.current);
+    }
+    wheelReleaseTimerRef.current = window.setTimeout(() => {
       wheelLock.current = false;
-    }, 450);
+      wheelReleaseTimerRef.current = null;
+    }, 250);
   }
 
   function handleTouchStart(e: TouchEvent<HTMLDivElement>) {
