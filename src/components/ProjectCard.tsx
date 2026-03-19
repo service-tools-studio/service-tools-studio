@@ -73,7 +73,7 @@ export default function ProjectCard({
         </div>
 
         {/* Right: Visual preview */}
-        <div className="min-w-0 bg-stone-100 text-white/80 overflow-hidden">
+        <div className="min-w-0 bg-stone-100 text-white/80 overflow-hidden pb-4">
           <div className="text-xs uppercase tracking-[0.2em] px-6 pt-4 pb-2 text-violet-400">
             Live preview
           </div>
