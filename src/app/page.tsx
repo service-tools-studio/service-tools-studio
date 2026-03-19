@@ -77,7 +77,7 @@ export default function HomePage() {
                           <span className="relative z-10">Hire us to build your website</span>
                         </a>
                         <a
-                          href="#services"
+                          href="/services"
                           className="inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-ink hover:border-stone-400"
                         >
                           See what we build
@@ -106,7 +106,7 @@ export default function HomePage() {
                       <span className="relative z-10">Hire us to build your website</span>
                     </a>
                     <a
-                      href="#services"
+                      href="/services"
                       className="inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-ink hover:border-stone-400"
                     >
                       See what we build
