@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent } from 'react';
 import Link from 'next/link';
 import IframePreview from '@/components/IframePreview';
 import type { Project } from '@/types';
@@ -13,6 +13,10 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(1);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartX = useRef<number | null>(null);
+  const dragStartScrollLeft = useRef(0);
 
   const projectsWithIndex = useMemo(() => projects ?? [], [projects]);
 
@@ -34,6 +38,47 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
     const epsilon = 2; // avoids flicker due to sub-pixel scrolling
     setCanScrollPrev(el.scrollLeft > epsilon);
     setCanScrollNext(el.scrollLeft < maxScrollLeft - epsilon);
+
+    const slideWidth = Math.max(1, el.clientWidth);
+    const current = Math.round(el.scrollLeft / slideWidth) + 1;
+    setActiveIndex(clamp(current, 1, projectsWithIndex.length));
+  }
+
+  function handleKeyDown(e: KeyboardEvent<HTMLDivElement>) {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      scrollByAmount(1);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      scrollByAmount(-1);
+    }
+  }
+
+  function handleMouseDown(e: MouseEvent<HTMLDivElement>) {
+    const target = e.target as HTMLElement;
+    if (target.closest('a, button, input, textarea, select, iframe')) return;
+
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    setIsDragging(true);
+    dragStartX.current = e.clientX;
+    dragStartScrollLeft.current = el.scrollLeft;
+  }
+
+  function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
+    if (!isDragging || dragStartX.current == null) return;
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const delta = e.clientX - dragStartX.current;
+    el.scrollLeft = dragStartScrollLeft.current - delta;
+  }
+
+  function handleMouseUpOrLeave() {
+    if (!isDragging) return;
+    setIsDragging(false);
+    dragStartX.current = null;
   }
 
   if (!projectsWithIndex.length) return null;
@@ -60,8 +105,16 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
       <div
         ref={scrollerRef}
         onScroll={onScroll}
-        className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory"
+        className={`flex overflow-x-auto scroll-smooth snap-x snap-mandatory ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
         style={{ WebkitOverflowScrolling: 'touch' }}
+        onKeyDown={handleKeyDown}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUpOrLeave}
+        onMouseLeave={handleMouseUpOrLeave}
+        tabIndex={0}
+        role="region"
+        aria-label="Project carousel"
       >
         {projectsWithIndex.map((project, idx) => {
           const detailsHref = project.slug ? `/work/${project.slug}` : '/work';
@@ -149,6 +202,9 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
         >
           →
         </button>
+      </div>
+      <div className="mt-2 text-center text-xs font-medium text-stone-600" aria-live="polite">
+        {activeIndex} / {projectsWithIndex.length}
       </div>
     </div>
   );

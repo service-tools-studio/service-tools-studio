@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState, type TouchEvent, type WheelEvent } from 'react';
+import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent, type TouchEvent, type WheelEvent } from 'react';
 import type { Project } from '@/types';
 import ProjectCard from '@/components/ProjectCard';
 
@@ -14,13 +14,11 @@ export default function ProjectCardsCarousel({ projects }: { projects: Project[]
 
   const [index, setIndex] = useState(1);
   const [animate, setAnimate] = useState(true);
-  const [autoPaused, setAutoPaused] = useState(false);
-  const [interactivePaused, setInteractivePaused] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const wheelLock = useRef(false);
   const wheelReleaseTimerRef = useRef<number | null>(null);
-  const resumeTimerRef = useRef<number | null>(null);
-  const interactiveSlidesRef = useRef<Set<number>>(new Set());
+  const mouseStartX = useRef<number | null>(null);
+  const isMouseDragging = useRef(false);
 
   function goNext() {
     setIndex((prev) => prev + 1);
@@ -30,42 +28,13 @@ export default function ProjectCardsCarousel({ projects }: { projects: Project[]
     setIndex((prev) => prev - 1);
   }
 
-  function pauseAutoAdvance() {
-    setAutoPaused(true);
-    if (resumeTimerRef.current != null) {
-      window.clearTimeout(resumeTimerRef.current);
-    }
-    resumeTimerRef.current = window.setTimeout(() => {
-      setAutoPaused(false);
-      resumeTimerRef.current = null;
-    }, 5000);
-  }
-
-  useEffect(() => {
-    if (projects.length <= 1 || autoPaused || interactivePaused) return;
-
-    const timer = window.setInterval(() => {
-      goNext();
-    }, 3000);
-
-    return () => window.clearInterval(timer);
-  }, [projects.length, autoPaused, interactivePaused]);
-
   useEffect(() => {
     return () => {
-      if (resumeTimerRef.current != null) {
-        window.clearTimeout(resumeTimerRef.current);
-      }
       if (wheelReleaseTimerRef.current != null) {
         window.clearTimeout(wheelReleaseTimerRef.current);
       }
     };
   }, []);
-
-  useEffect(() => {
-    interactiveSlidesRef.current.clear();
-    setInteractivePaused(false);
-  }, [projects.length]);
 
   function handleTransitionEnd() {
     if (!projects.length) return;
@@ -92,7 +61,6 @@ export default function ProjectCardsCarousel({ projects }: { projects: Project[]
     if (Math.abs(delta) < 8) return;
 
     e.preventDefault();
-    pauseAutoAdvance();
 
     // Treat one wheel/trackpad gesture as one slide move.
     if (!wheelLock.current) {
@@ -124,39 +92,101 @@ export default function ProjectCardsCarousel({ projects }: { projects: Project[]
     touchStartX.current = null;
     if (Math.abs(delta) < 40) return;
 
-    pauseAutoAdvance();
     if (delta > 0) goNext();
     else goPrev();
   }
 
-  function handleSlideInteractiveChange(slideIdx: number, isInteractive: boolean) {
-    if (isInteractive) interactiveSlidesRef.current.add(slideIdx);
-    else interactiveSlidesRef.current.delete(slideIdx);
-
-    setInteractivePaused(interactiveSlidesRef.current.size > 0);
+  function handleMouseDown(e: MouseEvent<HTMLDivElement>) {
+    // Don't hijack interactions on controls/links/iframe content.
+    const target = e.target as HTMLElement;
+    if (target.closest('a, button, input, textarea, select, iframe')) return;
+    mouseStartX.current = e.clientX;
+    isMouseDragging.current = true;
   }
+
+  function handleMouseUp(e: MouseEvent<HTMLDivElement>) {
+    if (!isMouseDragging.current || mouseStartX.current == null) return;
+    const delta = mouseStartX.current - e.clientX;
+    mouseStartX.current = null;
+    isMouseDragging.current = false;
+
+    if (Math.abs(delta) < 40) return;
+    if (delta > 0) goNext();
+    else goPrev();
+  }
+
+  function handleMouseLeave() {
+    mouseStartX.current = null;
+    isMouseDragging.current = false;
+  }
+
+  function handleKeyDown(e: KeyboardEvent<HTMLDivElement>) {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      goNext();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      goPrev();
+    }
+  }
+
+  const currentProjectNumber = (() => {
+    if (!projects.length) return 0;
+    if (index <= 0) return projects.length;
+    if (index > projects.length) return 1;
+    return index;
+  })();
 
   if (!projects.length) return null;
 
   return (
     <div className="overflow-hidden">
       <div
-        className={`flex ${animate ? 'transition-transform duration-500 ease-out' : ''}`}
+        className={`flex cursor-grab ${animate ? 'transition-transform duration-500 ease-out' : ''}`}
         style={{ transform: `translateX(-${index * 100}%)` }}
         onTransitionEnd={handleTransitionEnd}
         onWheel={handleWheel}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+        role="region"
+        aria-label="Project carousel"
       >
         {slides.map((project, i) => (
           <div key={`${project.slug ?? project.title}-${i}`} className="w-full shrink-0">
             <ProjectCard
               project={project}
               href={project.slug ? `/work/${project.slug}` : '/work'}
-              onInteractiveChange={(interactive) => handleSlideInteractiveChange(i, interactive)}
+              noBottomSpace
             />
           </div>
         ))}
+      </div>
+
+      <div className="mt-4 flex items-center justify-center gap-3">
+        <button
+          type="button"
+          onClick={goPrev}
+          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 bg-white text-sm text-ink transition hover:border-stone-400"
+          aria-label="Previous project"
+        >
+          ←
+        </button>
+        <span className="min-w-12 text-center text-xs font-medium text-stone-600" aria-live="polite">
+          {currentProjectNumber} / {projects.length}
+        </span>
+        <button
+          type="button"
+          onClick={goNext}
+          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 bg-white text-sm text-ink transition hover:border-stone-400"
+          aria-label="Next project"
+        >
+          →
+        </button>
       </div>
     </div>
   );

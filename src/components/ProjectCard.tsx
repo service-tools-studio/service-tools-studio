@@ -6,13 +6,15 @@ export default function ProjectCard({
   project,
   href,
   onInteractiveChange,
+  noBottomSpace = false,
 }: {
   project: Project;
   href: string;
   onInteractiveChange?: (interactive: boolean) => void;
+  noBottomSpace?: boolean;
 }) {
   return (
-    <div className="rounded-3xl mb-8 bg-white shadow-sm overflow-hidden">
+    <div className={`rounded-3xl bg-white shadow-sm overflow-hidden ${noBottomSpace ? '' : 'mb-8'}`}>
       <div className="grid md:grid-cols-[1.2fr,1fr]">
         {/* Left: Description */}
         <div className="min-w-0 p-6 md:p-8">
