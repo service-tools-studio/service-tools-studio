@@ -11,6 +11,7 @@ import SiteHeader from '@/components/SiteHeader';
 import Process from '@/components/Process';
 import IntakeForm from '@/components/IntakeForm';
 import ProjectCardsCarousel from '@/components/ProjectCardsCarousel';
+import OutcomesSection from '@/components/OutcomesSection';
 
 
 export default function HomePage() {
@@ -24,12 +25,12 @@ export default function HomePage() {
       <SiteHeader />
       <main>
         {/* Hero */}
-        <section className="mt-6 sm:mt-0 bg-gradient-to-b from-accent/10 to-accent/15 mb-15">
-          <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 pt-8 pb-16 md:flex-row md:items-start md:pt-12 md:pb-24 px-10">
+        <section className="mt-6 sm:mt-0 bg-gradient-to-b from-accent/10 to-accent/15">
+          <div className="mx-auto flex max-w-5xl flex-col gap-5 px-4 pt-8 pb-16 lg:flex-row lg:items-start lg:pt-12 lg:pb-24 px-10">
             <div className="flex-1">
-              <div className="flex flex-col md:flex-row md:items-start md:gap-10">
+              <div className="flex flex-col lg:flex-row lg:items-start lg:gap-10">
                 <div
-                  className="mb-4 relative flex-none w-full self-start md:mb-0"
+                  className="mb-4 relative flex-none w-full self-start lg:mb-0"
                   style={{ paddingBottom: '51.3%' }}
                 >
                   <Image
@@ -50,7 +51,7 @@ export default function HomePage() {
                   />
 
                   {/* Overlay hero content on top of the image (wider viewports). */}
-                  <div className="absolute inset-y-0 right-0 hidden w-3/5 overflow-visible p-8 md:flex md:flex-col md:justify-center">
+                  <div className="absolute inset-y-0 right-0 hidden w-3/5 overflow-visible p-8 lg:flex lg:flex-col lg:justify-center">
                     {/* Fuzzy/dispersing white background behind the whole overlay stack */}
                     <div className="absolute -inset-6 bg-white/70 blur-2xl" aria-hidden />
                     <div
@@ -62,7 +63,7 @@ export default function HomePage() {
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
                         Built for service businesses · Portland, OR · Two-week delivery
                       </p>
-                      <h1 className="mt-3 text-3xl text-ink sm:text-4xl md:text-5xl font-semibold tracking-tight">
+                      <h1 className="mt-3 mb-8 text-4xl text-ink sm:text-5xl lg:text-6xl font-semibold tracking-tight">
                         You run the business. We build the website.
                       </h1>
                       <p className="mt-4 max-w-xl text-sm text-stone-600">
@@ -87,11 +88,11 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="flex-1 md:hidden">
+                <div className="flex-1 lg:hidden">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
                     Built for service businesses · Portland, OR · Two-week delivery
                   </p>
-                  <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-ink">
+                  <h1 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-ink">
                     You run the business. We build the website.
                   </h1>
                   <p className="mt-4 max-w-xl text-sm sm:text-base text-stone-600">
@@ -118,7 +119,7 @@ export default function HomePage() {
 
           </div>
 
-          <div className="mx-auto max-w-3xl px-4">
+          {/* <div className="mx-auto max-w-3xl px-4">
             <a
               href="#about"
               aria-label="Go to About Service Tools Studio section"
@@ -144,9 +145,14 @@ export default function HomePage() {
                 </p>
               </div>
             </a>
-          </div>
+          </div> */}
 
         </section>
+
+        {/* Outcomes */}
+        <Section id="outcomes">
+          <OutcomesSection />
+        </Section>
 
         {/* Projects */}
         <Section id="projects" title="Sites we’ve built">
