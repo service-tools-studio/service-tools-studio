@@ -20,12 +20,12 @@ export default function HomePage() {
   );
 
   return (
-    <div className="min-h-screen bg-accent/10 text-ink">
-      <main>
+    <div className="text-ink">
+      <main className="min-h-screen bg-white">
         <section>
           <div
             className={[
-              'mx-auto flex max-w-5xl flex-col gap-0 px-4 pt-8 pb-16 sm:px-10',
+              'mx-auto flex max-w-5xl flex-col gap-0 bg-white px-4 pt-8 pb-16 sm:px-10',
               'lg:mx-0 lg:max-w-none lg:flex-row lg:items-center lg:gap-10 lg:px-0 lg:pt-12 lg:pb-24',
               'xl:gap-14',
             ].join(' ')}
@@ -105,12 +105,12 @@ export default function HomePage() {
         </section>
 
         {/* Outcomes */}
-        <Section id="outcomes">
+        <Section id="outcomes" className="bg-white">
           <OutcomesSection />
         </Section>
 
         {/* Projects */}
-        <Section id="projects" title="Sites we’ve built">
+        <Section id="projects" title="Sites we’ve built" className="bg-white">
           <ProjectCardsCarousel projects={projects} />
         </Section>
 
@@ -125,7 +125,15 @@ export default function HomePage() {
         </Section>
 
         {/* Intake form */}
-        <Section id="intake" title="Ready? Tell us about your business">
+        <Section
+          id="intake"
+          title="Ready? Tell us about your business"
+          className="py-12 sm:py-14 lg:py-16"
+          style={{
+            backgroundColor:
+              "color-mix(in srgb, var(--btn-primary) 18%, transparent)",
+          }}
+        >
           <IntakeForm />
         </Section>
       </main>

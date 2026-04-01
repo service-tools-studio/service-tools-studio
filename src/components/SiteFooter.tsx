@@ -79,13 +79,13 @@ export default function SiteFooter() {
               aria-label="Optional in-person website planning in Portland"
             >
               <span className="text-2xl sm:text-3xl" aria-hidden>☕️</span>
-              <p className="text-sm font-bold text-accent-700 sm:text-base">
+              <p className="text-sm font-semibold text-fg sm:text-base">
                 Optional in-person planning in Portland
               </p>
-              <p className="text-xs text-accent-700/90 sm:text-sm leading-snug">
+              <p className="text-xs text-fg/70 sm:text-sm leading-snug">
                 Sick of Zoom meetings? Are you the kind of person who prefers to meet in person? (Me too!)
                 Coffee shop, co-working space, or wherever you feel comfortable — your spot or mine.
-                Just let me know on your <a href="/intake" className="text-accent-700 underline">intake form</a> and we'll make it happen.
+                Just let me know on your <a href="/intake" className="font-medium text-fg underline underline-offset-2 hover:text-fg/90">intake form</a> and we'll make it happen.
               </p>
             </div>
           </div>
@@ -166,13 +166,13 @@ export default function SiteFooter() {
             aria-label="Optional in-person website planning in Portland"
           >
             <span className="text-2xl sm:text-3xl" aria-hidden>☕️</span>
-            <p className="text-sm font-bold text-accent-700 sm:text-base">
+            <p className="text-sm font-semibold text-fg sm:text-base">
               Optional in-person planning in Portland
             </p>
-            <p className="text-xs text-accent-700/90 sm:text-sm leading-snug">
+            <p className="text-xs text-fg/70 sm:text-sm leading-snug">
               Sick of Zoom meetings? Are you the kind of person who prefers to meet in person? (Me too!)
               Coffee shop, co-working space, or wherever you feel comfortable — your spot or mine.
-              Just let me know on your <a href="/intake" className="text-accent-700 underline">intake form</a> and we'll make it happen.
+              Just let me know on your <a href="/intake" className="font-medium text-fg underline underline-offset-2 hover:text-fg/90">intake form</a> and we'll make it happen.
             </p>
           </div>
         </div>

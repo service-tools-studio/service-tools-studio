@@ -40,7 +40,7 @@ export default function About() {
             <span className="flex h-8 w-8 items-center justify-center rounded-full border border-violet-200 bg-violet-50 text-violet-700 hover:bg-violet-100 transition">
               <LinkedinIcon size={16} />
             </span>
-            <span className="underline underline-offset-4">Connect with me on LinkedIn</span>
+            <span className="underline underline-offset-4">Connect with Jasmin on LinkedIn</span>
           </a>
         </div>
       </div>
