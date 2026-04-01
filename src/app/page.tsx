@@ -1,13 +1,12 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import Image from 'next/image';
 import Section from '@/components/Section';
 import Services from '@/components/Services';
 import About from '@/components/About';
 import type { Project } from '@/types';
 import { CONTACT_EMAIL, CALENDLY_URL, PROJECTS } from './constants';
-import SiteHeader from '@/components/SiteHeader';
 import Process from '@/components/Process';
 import IntakeForm from '@/components/IntakeForm';
 import ProjectCardsCarousel from '@/components/ProjectCardsCarousel';
@@ -22,101 +21,57 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-accent/10 text-ink">
-      <SiteHeader />
       <main>
-        {/* Hero */}
-        <section className="mt-6 sm:mt-0 bg-gradient-to-b from-accent/10 to-accent/15">
-          <div className="mx-auto flex max-w-5xl flex-col gap-5 px-4 pt-8 pb-16 lg:flex-row lg:items-start lg:pt-12 lg:pb-24 px-10">
-            <div className="flex-1">
-              <div className="flex flex-col lg:flex-row lg:items-start lg:gap-10">
-                <div
-                  className="mb-4 relative flex-none w-full self-start lg:mb-0"
-                  style={{ paddingBottom: '51.3%' }}
+        <section>
+          <div
+            className={[
+              'mx-auto flex max-w-5xl flex-col gap-0 px-4 pt-8 pb-16 sm:px-10',
+              'lg:mx-0 lg:max-w-none lg:flex-row lg:items-center lg:gap-10 lg:px-0 lg:pt-12 lg:pb-24',
+              'xl:gap-14',
+            ].join(' ')}
+          >
+            <div className="order-1 flex flex-col lg:order-2 lg:flex-1 lg:min-w-0 lg:justify-center lg:self-center lg:px-10 xl:px-12 2xl:pr-[max(2.5rem,calc((100vw-80rem)/2+3rem))]">
+              <div className="mx-auto flex w-full max-w-xl flex-col lg:mx-0">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
+                  Done for you · Two-week delivery
+                </p>
+                <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink sm:text-5xl lg:text-6xl">
+                  You run the business. We build the website.
+                </h1>
+                <p className="mt-4 max-w-xl text-sm text-stone-600 sm:text-base">
+                  Tell us about your business and we'll build you a site that turns visitors into booked customers — with tools like instant quote calculators and online booking built right in. We're a Portland-based studio specializing in service businesses. We handle everything from design to launch in two weeks, so you can focus on the business you love.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="/intake"
+                    className="sparkle-btn inline-flex relative items-center justify-center overflow-hidden rounded-full px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500"
+                  >
+                    <span className="sparkle-layer" />
+                    <span className="relative z-10">Hire us to build your website</span>
+                  </a>
+                  {/* <a
+                  href="/services"
+                  className="inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-ink hover:border-stone-400"
                 >
-                  <Image
-                    src="/images/me-transparent-background-v7.webp"
-                    alt="Jasmin working at a computer"
-                    fill
-                    sizes="(max-width: 640px) 100vw, 520px"
-                    className="object-contain object-left animate-emoji-slide-in"
-                    style={{
-                      animationDelay: '120ms',
-                      WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 45%)',
-                      maskImage: 'linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 45%)',
-                      WebkitMaskRepeat: 'no-repeat',
-                      maskRepeat: 'no-repeat',
-                      WebkitMaskSize: '100% 100%',
-                      maskSize: '100% 100%',
-                    }}
-                  />
-
-                  {/* Overlay hero content on top of the image (wider viewports). */}
-                  <div className="absolute inset-y-0 right-0 hidden w-3/5 overflow-visible p-8 lg:flex lg:flex-col lg:justify-center">
-                    {/* Fuzzy/dispersing white background behind the whole overlay stack */}
-                    <div className="absolute -inset-6 bg-white/70 blur-2xl" aria-hidden />
-                    <div
-                      className="absolute inset-0 rounded-3xl bg-[linear-gradient(90deg,rgba(255,255,255,0.00)_0%,rgba(255,255,255,0.08)_14%,rgba(255,255,255,0.35)_40%,rgba(255,255,255,0.55)_60%)]"
-                      aria-hidden
-                    />
-
-                    <div className="relative z-10">
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
-                        Built for service businesses · Portland, OR · Two-week delivery
-                      </p>
-                      <h1 className="mt-3 mb-8 text-4xl text-ink sm:text-5xl lg:text-6xl font-semibold tracking-tight">
-                        You run the business. We build the website.
-                      </h1>
-                      <p className="mt-4 max-w-xl text-sm text-stone-600">
-                        Tell us about your business and we'll build you a site that turns visitors into booked customers — with tools like instant quote calculators and online booking built right in. We're a Portland-based studio specializing in service businesses. We handle everything from design to launch in two weeks, so you can focus on the business you love.
-                      </p>
-                      <div className="mt-6 flex flex-wrap gap-3">
-                        <a
-                          href="/intake"
-                          className="sparkle-btn inline-flex relative overflow-hidden items-center justify-center rounded-full px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500"
-                        >
-                          <span className="sparkle-layer" />
-                          <span className="relative z-10">Hire us to build your website</span>
-                        </a>
-                        <a
-                          href="/services"
-                          className="inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-ink hover:border-stone-400"
-                        >
-                          See what we build
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex-1 lg:hidden">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
-                    Built for service businesses · Portland, OR · Two-week delivery
-                  </p>
-                  <h1 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-ink">
-                    You run the business. We build the website.
-                  </h1>
-                  <p className="mt-4 max-w-xl text-sm sm:text-base text-stone-600">
-                    Tell us about your business and we'll build you a site that turns visitors into booked customers — with tools like instant quote calculators and online booking built right in. We're a Portland-based studio specializing in service businesses. We handle everything from design to launch in two weeks, so you can focus on the business you love.
-                  </p>
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <a
-                      href="/intake"
-                      className="sparkle-btn inline-flex relative overflow-hidden items-center justify-center rounded-full px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500"
-                    >
-                      <span className="sparkle-layer" />
-                      <span className="relative z-10">Hire us to build your website</span>
-                    </a>
-                    <a
-                      href="/services"
-                      className="inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-ink hover:border-stone-400"
-                    >
-                      See what we build
-                    </a>
-                  </div>
+                  See what we build
+                </a> */}
                 </div>
               </div>
             </div>
 
+            <div className="relative order-2 w-full max-lg:-mt-4 self-start lg:order-1 lg:mt-0 lg:w-[min(48vw,720px)] lg:shrink-0 lg:self-stretch">
+              <div className="flex min-h-0 items-start justify-start lg:min-h-[min(85vh,760px)] lg:items-end">
+                <Image
+                  src="/images/me-transparent-background-v8.png"
+                  alt="Jasmin working at a computer"
+                  width={3375}
+                  height={4219}
+                  sizes="(max-width: 1023px) 100vw, 48vw"
+                  className="max-h-[min(70vh,560px)] w-full object-contain object-left object-bottom lg:max-h-[min(92vh,800px)]"
+                  priority
+                />
+              </div>
+            </div>
           </div>
 
           {/* <div className="mx-auto max-w-3xl px-4">

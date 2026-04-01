@@ -31,9 +31,9 @@ export default function OutcomesSection() {
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="max-w-2xl mb-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
+          {/* <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
             What you get
-          </p>
+          </p> */}
           <h2 className="mt-3 mb-4 text-2xl text-ink sm:text-3xl lg:text-5xl font-semibold tracking-tight">
             Built to turn visitors into booked customers
           </h2>
@@ -51,7 +51,7 @@ export default function OutcomesSection() {
               className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200"
             >
               <div className="text-2xl mb-4">{item.icon}</div>
-              <h3 className="text-xl font-semibold text-purple-900 mb-2">
+              <h3 className="text-xl font-semibold text-ink mb-2">
                 {item.title}
               </h3>
               <p className="text-gray-600 text-sm">{item.description}</p>
