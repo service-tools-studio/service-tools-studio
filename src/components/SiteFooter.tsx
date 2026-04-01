@@ -25,7 +25,8 @@ export const site = {
 export default function SiteFooter() {
   const pathname = usePathname();
   const isIntakePage = pathname === '/intake';
-  if (isIntakePage) {
+  const isHomePage = pathname === '/';
+  if (isIntakePage || isHomePage) {
     return (
       <footer className="bg-bg">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
