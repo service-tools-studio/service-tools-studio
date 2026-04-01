@@ -34,7 +34,7 @@ export default function OutcomesSection() {
           {/* <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
             What you get
           </p> */}
-          <h2 className="mt-3 mb-4 text-2xl text-ink sm:text-3xl lg:text-5xl font-semibold tracking-tight">
+          <h2 className="mt-3 mb-4 text-2xl text-ink sm:text-3xl lg:text-5xl font-semibold">
             Built to turn visitors into booked customers
           </h2>
           <p className="text-gray-600 text-sm">

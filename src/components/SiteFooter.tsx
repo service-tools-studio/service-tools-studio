@@ -40,7 +40,7 @@ export default function SiteFooter() {
                   target="_blank"
                   rel="noreferrer"
                   className="
-                  sparkle-btn
+                  sparkle-btn sparkle-btn--ink
                   relative inline-flex items-center justify-center
                   overflow-hidden
                   rounded-full
@@ -60,7 +60,7 @@ export default function SiteFooter() {
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold tracking-tight text-fg">
+                <h3 className="text-lg font-semibold text-fg">
                   Prefer a call?
                 </h3>
                 <p className="mt-2 max-w-xl text-sm text-fg/70">
@@ -113,7 +113,7 @@ export default function SiteFooter() {
         <div className="mb-10 rounded-3xl bg-muted/40 p-6 sm:p-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <h3 className="text-lg font-semibold tracking-tight text-fg">
+              <h3 className="text-lg font-semibold text-fg">
                 Ready to move forward?
               </h3>
               <p className="mt-2 max-w-xl text-sm text-fg/70">
@@ -128,7 +128,7 @@ export default function SiteFooter() {
                 target="_blank"
                 rel="noreferrer"
                 className="
-                  sparkle-btn
+                  sparkle-btn sparkle-btn--ink
                   relative inline-flex items-center justify-center
                   overflow-hidden
                   rounded-full

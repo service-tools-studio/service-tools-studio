@@ -57,6 +57,8 @@ body {
   h6 {
     font-family: var(--font-roboto-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
       Consolas, monospace;
+    /* Tighter tracking — letters sit closer */
+    letter-spacing: -0.06em;
   }
 }
 
@@ -166,4 +168,21 @@ body {
       transform: translate(-160px, -160px) rotate(360deg);
     }
   }
+}
+
+/*
+ * Footer “Book a call” — purple ink fill.
+ * Defined unlayered so it wins over Tailwind @layer utilities (e.g. bg-* on links).
+ */
+.sparkle-btn.sparkle-btn--ink {
+  background-color: var(--text-primary);
+  background-image: none;
+  box-shadow: 0 0 22px rgba(76, 20, 98, 0.42);
+}
+
+.sparkle-btn.sparkle-btn--ink:hover {
+  background-color: #5a1970;
+  background-image: none;
+  box-shadow: 0 0 30px rgba(76, 20, 98, 0.48);
+  transform: translateY(-1px);
 }

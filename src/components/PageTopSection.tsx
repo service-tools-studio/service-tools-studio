@@ -15,7 +15,7 @@ export default function PageTopSection({
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-700 shimmer-text">
           {slug}
         </p>
-        <h1 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight text-ink">
+        <h1 className="mt-3 text-3xl sm:text-4xl font-semibold text-ink">
           {title}
         </h1>
         <p className="mt-4 max-w-2xl text-sm sm:text-base text-stone-600">

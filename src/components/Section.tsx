@@ -19,7 +19,7 @@ export default function Section({
     >
       <div className="mx-auto w-full min-w-0 max-w-5xl px-4 mb-10">
         {title && (
-          <h2 className="mb-6 text-2xl sm:text-3xl font-semibold tracking-tight text-ink">
+          <h2 className="mb-6 text-2xl sm:text-3xl font-semibold text-ink">
             {title}
           </h2>
         )}

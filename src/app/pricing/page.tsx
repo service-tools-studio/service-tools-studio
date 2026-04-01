@@ -72,7 +72,7 @@ export default function PricingPage() {
                   Most popular
                 </p>
               )}
-              <h3 className="text-lg font-semibold tracking-tight text-ink">
+              <h3 className="text-lg font-semibold text-ink">
                 {tier.name}
               </h3>
               {tier.subtitle && (

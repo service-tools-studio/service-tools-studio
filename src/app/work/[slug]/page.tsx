@@ -31,7 +31,7 @@ export default function WorkDetailPage() {
             ← Back to work
           </Link>
 
-          <h1 className="mt-4 text-3xl sm:text-4xl font-semibold tracking-tight text-ink">
+          <h1 className="mt-4 text-3xl sm:text-4xl font-semibold text-ink">
             {project.title}
           </h1>
 

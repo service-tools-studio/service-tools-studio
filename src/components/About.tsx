@@ -3,20 +3,8 @@ import Image from 'next/image';
 
 export default function About() {
   return (
-    <div className="grid gap-6 md:grid-cols-[1fr,1.5fr] items-center">
-      <div className="flex justify-center">
-        <div className="overflow-hidden rounded-2xl bg-white shadow-sm max-w-xs">
-          <Image
-            src="/images/professional-headshot.jpg"
-            alt="Jasmin, founder of Service Tools Studio"
-            width={520}
-            height={650}
-            className="h-full w-full object-cover"
-            priority={false}
-          />
-        </div>
-      </div>
-      <div className="text-sm text-stone-700 space-y-3">
+    <div className="flex flex-row items-start gap-3 sm:gap-8 lg:gap-12">
+      <div className="min-w-0 flex-1 text-sm text-stone-700 space-y-3">
         <p>
           <span className="font-semibold text-stone-900">Hi, I&apos;m Jasmin, owner and founder of Service Tools Studio.</span>{' '}
           I&apos;m a web engineer who builds clean, modern websites for small businesses and founders who want a fresh start online.
@@ -42,6 +30,20 @@ export default function About() {
             </span>
             <span className="underline underline-offset-4">Connect with Jasmin on LinkedIn</span>
           </a>
+        </div>
+      </div>
+
+      <div className="w-40 shrink-0 pt-0.5 sm:w-auto sm:max-w-[min(100%,280px)] sm:pt-1">
+        <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
+          <Image
+            src="/images/cathedral-headshot.jpg"
+            alt="Jasmin, founder of Service Tools Studio"
+            width={768}
+            height={1365}
+            sizes="(max-width: 640px) 160px, 280px"
+            className="w-full h-auto object-cover object-center"
+            priority={false}
+          />
         </div>
       </div>
     </div>

@@ -35,8 +35,9 @@ export default function HomePage() {
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
                   Done for you · Two-week delivery
                 </p>
-                <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink sm:text-5xl lg:text-6xl">
-                  You run the business. We build the website.
+                <h1 className="mt-3 text-4xl font-semibold text-ink sm:text-5xl lg:text-6xl">
+                  You run the business. We build the{' '}
+                  <span className="font-bold">website</span>.
                 </h1>
                 <p className="mt-4 max-w-xl text-sm text-stone-600 sm:text-base">
                   Tell us about your business and we'll build you a site that turns visitors into booked customers — with tools like instant quote calculators and online booking built right in. We're a Portland-based studio specializing in service businesses. We handle everything from design to launch in two weeks, so you can focus on the business you love.

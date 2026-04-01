@@ -188,7 +188,7 @@ export default function IntakeForm() {
         <div className="mt-2 text-xs text-stone-500">
           <ul>
             <li>Launch Site = focused page built around one clear CTA.</li>
-            <li>Business Site = faster build using a guided layout system.</li>
+            <li>Business Site = multi-CTA site built on a guided layout system.</li>
             <li>Custom = fully tailored visual system and features from scratch.</li>
           </ul>
         </div>
