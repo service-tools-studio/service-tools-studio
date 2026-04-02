@@ -8,7 +8,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <SiteHeader />
-      <div className="pt-20">{children}</div>
+      <div className="pt-16">{children}</div>
       <SiteFooter />
     </div>
   );
