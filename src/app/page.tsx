@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import Image from 'next/image';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import Section from '@/components/Section';
 import Services from '@/components/Services';
 import About from '@/components/About';
@@ -18,61 +19,78 @@ export default function HomePage() {
     () => PROJECTS,
     []
   );
+  /** Matches Tailwind `lg` (1024px). False on server until hydrated. */
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   return (
     <div className="text-ink">
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-white" data-desktop={isDesktop}>
         <section>
           <div
             className={[
               'mx-auto flex max-w-5xl flex-col gap-0 bg-white px-4 pt-8 pb-16 sm:px-10',
-              'lg:mx-0 lg:max-w-none lg:flex-row lg:items-center lg:gap-10 lg:px-0 lg:pt-12 lg:pb-24',
-              'xl:gap-14',
+              'lg:mx-0 lg:max-w-none lg:px-0 lg:pt-12 lg:pb-16',
             ].join(' ')}
           >
-            <div className="order-1 flex flex-col lg:order-2 lg:flex-1 lg:min-w-0 lg:justify-center lg:self-center lg:px-10 xl:px-12 2xl:pr-[max(2.5rem,calc((100vw-80rem)/2+3rem))]">
-              <div className="mx-auto flex w-full max-w-xl flex-col lg:mx-0">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
-                  Done for you · Two-week delivery
-                </p>
-                <h1 className="mt-3 text-4xl font-semibold text-ink sm:text-5xl lg:text-6xl">
-                  You run the business. We build the{' '}
-                  <span className="font-bold">website</span>.
-                </h1>
-                <p className="mt-4 max-w-xl text-sm text-stone-600 sm:text-base">
-                  Tell us about your business and we'll build you a site that turns visitors into booked customers — with tools like instant quote calculators and online booking built right in. We're a Portland-based studio specializing in service businesses. We handle everything from design to launch in two weeks, so you can focus on the business you love.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href="/intake"
-                    className="sparkle-btn inline-flex relative items-center justify-center overflow-hidden rounded-full px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500"
-                  >
-                    <span className="sparkle-layer" />
-                    <span className="relative z-10">Hire us to build your website</span>
-                  </a>
-                  {/* <a
+            <div
+              className={[
+                'flex flex-col gap-0',
+                'lg:flex-row lg:items-start lg:gap-10 xl:gap-14',
+              ].join(' ')}
+            >
+              <div className="order-1 flex flex-col lg:order-2 lg:flex-1 lg:min-w-0 lg:justify-start lg:self-start lg:px-10 xl:px-12 2xl:pr-[max(2.5rem,calc((100vw-80rem)/2+3rem))]">
+                <div className="mx-auto flex w-full max-w-xl flex-col lg:mx-0 lg:max-w-none">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
+                    Done for you · Two-week delivery
+                  </p>
+                  <h1 className="mt-3 text-4xl font-semibold text-ink sm:text-5xl lg:text-6xl">
+                    You run the business. <div>We build the{' '}
+                      <span className="font-bold">website</span>.</div>
+                  </h1>
+                  {isDesktop && (
+                    <p className="mt-6 max-w-xl text-sm text-stone-600 sm:text-base">
+                      Tell us about your business and we'll build you a site that turns visitors into booked customers — with tools like instant quote calculators and online booking built right in. We handle everything from design to launch in two weeks, so you can focus on the business you love.
+                    </p>
+                  )}
+
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <a
+                      href="/intake"
+                      className="sparkle-btn inline-flex relative items-center justify-center overflow-hidden rounded-full px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500"
+                    >
+                      <span className="sparkle-layer" />
+                      <span className="relative z-10">Tell us about your business</span>
+                    </a>
+                    {/* <a
                   href="/services"
                   className="inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-ink hover:border-stone-400"
                 >
                   See what we build
                 </a> */}
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative order-2 w-full max-lg:-mt-4 self-start lg:order-1 lg:mt-0 lg:w-[min(38vw,520px)] lg:shrink-0 lg:self-stretch">
+                <div className="flex min-h-0 -ml-4 items-start justify-start sm:-ml-10 lg:ml-0 lg:min-h-[min(85vh,760px)] lg:items-end">
+                  <Image
+                    src="/images/me-transparent-background-v8.png"
+                    alt="Jasmin working at a computer"
+                    width={3375}
+                    height={4219}
+                    sizes="(max-width: 1023px) 100vw, 38vw"
+                    className="max-h-[min(70vh,560px)] w-full object-contain object-left object-bottom lg:max-h-[min(92vh,800px)]"
+                    priority
+                  />
                 </div>
               </div>
             </div>
 
-            <div className="relative order-2 w-full max-lg:-mt-4 self-start lg:order-1 lg:mt-0 lg:w-[min(48vw,720px)] lg:shrink-0 lg:self-stretch">
-              <div className="flex min-h-0 items-start justify-start lg:min-h-[min(85vh,760px)] lg:items-end">
-                <Image
-                  src="/images/me-transparent-background-v8.png"
-                  alt="Jasmin working at a computer"
-                  width={3375}
-                  height={4219}
-                  sizes="(max-width: 1023px) 100vw, 48vw"
-                  className="max-h-[min(70vh,560px)] w-full object-contain object-left object-bottom lg:max-h-[min(92vh,800px)]"
-                  priority
-                />
-              </div>
-            </div>
+            {/* {!isDesktop && <div className="mt-6 flex w-full justify-center lg:mt-0 lg:px-10 lg:pt-10 xl:px-12 xl:pt-12">
+              <p className="max-w-xl text-center text-sm text-stone-600 sm:text-base lg:max-w-3xl lg:text-base">
+                Tell us about your business and we'll build you a site that turns visitors into booked customers — with tools like instant quote calculators and online booking built right in. We're a Portland-based studio specializing in service businesses. We handle everything from design to launch in two weeks, so you can focus on the business you love.
+              </p>
+            </div>} */}
           </div>
 
           {/* <div className="mx-auto max-w-3xl px-4">

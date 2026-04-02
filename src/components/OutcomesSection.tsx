@@ -1,28 +1,28 @@
 export default function OutcomesSection() {
   const items = [
     {
-      title: "Instant quotes built in",
+      title: "Built-in tools",
       description:
-        "Customers can get pricing right on your site — no back-and-forth, no waiting.",
-      icon: "💸",
+        "Let customers get a quote & book instantly — no back-and-forth.",
+      icon: "🧰",
     },
     {
-      title: "Online booking, ready to go",
+      title: "Clear calls to action",
       description:
-        "Let people book your services anytime without needing to call or text.",
-      icon: "📅",
-    },
-    {
-      title: "Clear calls to action on every page",
-      description:
-        "No confusion about what to do next. Every page guides visitors toward calling or booking.",
+        "Every page guides visitors toward calling or booking.",
       icon: "⚡",
     },
     {
       title: "Fast, mobile-first design",
       description:
-        "Your site loads quickly and looks great on phones — where most customers are.",
+        "Loads quickly & looks great on phones.",
       icon: "📱",
+    },
+    {
+      title: "Done-for-you, start to finish",
+      description:
+        "We handle everything so you can focus on your business.",
+      icon: "🤝",
     },
   ];
 
@@ -31,16 +31,16 @@ export default function OutcomesSection() {
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="max-w-2xl mb-6">
-          {/* <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
-            What you get
-          </p> */}
-          <h2 className="mt-3 mb-4 text-2xl text-ink sm:text-3xl lg:text-5xl font-semibold">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
+            What's included
+          </p>
+          <h2 className="mt-3 mb-10 text-2xl text-ink sm:text-3xl lg:text-5xl font-semibold">
             Built to turn visitors into booked customers
           </h2>
-          <p className="text-gray-600 text-sm">
-            Everything is designed to make it easy for people to understand your
+          {/* <p className="text-gray-600 text-sm">
+            Designed to make it easy for people to understand your
             services, trust your business, and take action.
-          </p>
+          </p> */}
         </div>
 
         {/* Grid */}
