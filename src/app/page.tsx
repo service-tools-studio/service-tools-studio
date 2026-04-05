@@ -8,7 +8,7 @@ import Services from '@/components/Services';
 import About from '@/components/About';
 import type { Project } from '@/types';
 import { CONTACT_EMAIL, CALENDLY_URL, GOOGLE_REVIEWS_URL, PROJECTS } from './constants';
-import Process from '@/components/Process';
+import ProcessSection from '@/components/ProcessSection';
 import IntakeForm from '@/components/IntakeForm';
 import ProjectCardsCarousel from '@/components/ProjectCardsCarousel';
 import OutcomesSection from '@/components/OutcomesSection';
@@ -168,13 +168,16 @@ export default function HomePage() {
 
         <div className="my-25" />
 
-        {/* Process */}
-        <Section id="process" eyebrow="our simple process" title="How it works">
-          <Process />
-        </Section>
+        {/* Process — motion matches Outcomes (shared sectionReveal + per-card viewport) */}
+        <ProcessSection />
 
         {/* About */}
-        <Section id="about" eyebrow="who we are" title="About Service Tools Studio">
+        <Section
+          id="about"
+          eyebrow="who we are"
+          title="About Service Tools Studio"
+          className="pt-[50px]"
+        >
           <About />
         </Section>
 

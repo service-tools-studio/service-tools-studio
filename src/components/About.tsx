@@ -1,12 +1,47 @@
+'use client';
+
 import { LinkedinIcon } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
+/** Same thresholds as section cards; `once` so the headshot doesn’t replay on every pass. */
+const PHOTO_VIEWPORT = {
+  once: false,
+  amount: 0.4,
+  margin: '0px 0px -56px 0px',
+} as const;
+
+function aboutPhotoVariants(reduceMotion: boolean | null) {
+  if (reduceMotion) {
+    return {
+      hidden: { opacity: 1, x: 0 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0 } },
+    };
+  }
+  return {
+    hidden: { opacity: 0, x: 56 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.55, ease: 'easeOut' as const },
+    },
+  };
+}
 
 export default function About() {
+  const reduceMotion = useReducedMotion();
+  const photoVariants = aboutPhotoVariants(reduceMotion);
+
   return (
     <div className="flow-root">
       {/* Float right so body copy wraps along the left and under the image */}
       <div className="float-right mb-4 ml-3 w-40 pt-0.5 sm:mb-6 sm:ml-8 sm:w-[min(280px,calc(100%-2rem))] sm:max-w-[280px] sm:pt-1 lg:ml-12">
-        <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
+        <motion.div
+          className="overflow-hidden rounded-2xl bg-white shadow-sm"
+          variants={photoVariants}
+          initial={reduceMotion ? 'visible' : 'hidden'}
+          whileInView={reduceMotion ? undefined : 'visible'}
+          viewport={PHOTO_VIEWPORT}
+        >
           <Image
             src="/images/cathedral-headshot.jpg"
             alt="Jasmin, founder of Service Tools Studio"
@@ -16,7 +51,7 @@ export default function About() {
             className="h-auto w-full object-cover object-center"
             priority={false}
           />
-        </div>
+        </motion.div>
       </div>
 
       <div className="min-w-0 space-y-3 text-sm text-stone-700">

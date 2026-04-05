@@ -4,7 +4,6 @@ import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 
 const navItems = [
-  { href: '/services', label: 'Services' },
   { href: '/work', label: 'Our work' },
   { href: '/process', label: 'How it works' },
   { href: '/about', label: 'About us' },
