@@ -129,13 +129,14 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
                   Case study
                 </p> */}
 
-                <h3 className="text-sm font-semibold text-ink">{project.title}</h3>
-
-                {project.subtitle && (
-                  <p className="mt-1 text-xs text-stone-500">{project.subtitle}</p>
-                )}
-
                 <div className="mt-4 flex w-full flex-wrap justify-center gap-3 px-4">
+                  <div className="items-center gap-2">
+                    <h3 className="text-sm font-semibold text-ink">{project.title}</h3>
+
+                    {project.subtitle && (
+                      <p className="mt-1 text-xs text-stone-500">{project.subtitle}</p>
+                    )}
+                  </div>
                   {project.slug && (
                     <Link
                       href={detailsHref}
@@ -145,24 +146,6 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
                       View details →
                     </Link>
                   )}
-
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`Open live site for ${project.title} in a new tab`}
-                    className="
-                      sparkle-btn sparkle-btn--soft
-                      relative inline-flex items-center justify-center
-                      overflow-hidden rounded-full
-                      px-4 py-2
-                      text-xs font-medium
-                      transition-all duration-500
-                    "
-                  >
-                    <span className="sparkle-layer" aria-hidden />
-                    <span className="relative z-10">Live site ↗</span>
-                  </a>
                 </div>
 
                 <div className="mt-4">

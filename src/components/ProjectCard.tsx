@@ -5,12 +5,10 @@ import { Project } from '@/types';
 export default function ProjectCard({
   project,
   href,
-  onInteractiveChange,
   noBottomSpace = false,
 }: {
   project: Project;
   href: string;
-  onInteractiveChange?: (interactive: boolean) => void;
   noBottomSpace?: boolean;
 }) {
   return (
@@ -18,10 +16,6 @@ export default function ProjectCard({
       <div className="grid md:grid-cols-[1.2fr,1fr]">
         {/* Left: Description */}
         <div className="min-w-0 p-6 md:p-8">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent-700">
-            Case study
-          </p>
-
           <h3 className="text-sm font-semibold text-ink">{project.title}</h3>
           {project.subtitle && (
             <p className="mt-1 text-xs text-stone-500">{project.subtitle}</p>
@@ -53,26 +47,6 @@ export default function ProjectCard({
             >
               View details →
             </Link>
-
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`Open live site for ${project.title} in a new tab`}
-              className="
-    sparkle-btn sparkle-btn--soft
-    relative inline-flex items-center justify-center
-    overflow-hidden
-    rounded-full
-    px-4 py-2
-    text-xs font-medium
-    transition-all duration-500
-  "
-            >
-              <span className="sparkle-layer" aria-hidden />
-              <span className="relative z-10">Live site ↗</span>
-            </a>
-
           </div>
         </div>
 
@@ -86,7 +60,6 @@ export default function ProjectCard({
             url={project.liveUrl}
             title={project.previewTitle}
             detailsHref={project.slug}
-            onInteractiveChange={onInteractiveChange}
           />
         </div>
       </div>

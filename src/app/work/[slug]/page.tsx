@@ -43,23 +43,41 @@ export default function WorkDetailPage() {
         </div>
       </section>
 
-      {/* Overview */}
-      <Section id="overview" title="Overview">
-        <p className="max-w-3xl text-sm sm:text-base text-stone-700">
-          {project.overview}
-        </p>
-
-        <div className="mt-6 flex flex-wrap gap-2 text-[11px] text-stone-700">
-          {project.pills.map((pill) => (
-            <span
-              key={pill}
-              className="rounded-full border border-stone-200 bg-stone-50 px-3 py-1"
+      {/* Preview + overview: preview first on mobile; iframe left, copy right on lg */}
+      <section className="scroll-mt-20">
+        <div className="mx-auto w-full min-w-0 max-w-5xl px-4 mb-10">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[min(40vw,520px)_minmax(0,1fr)] lg:items-start lg:gap-10 xl:gap-12">
+            <div
+              id="preview"
+              className="w-full min-w-0 scroll-mt-20 justify-self-center lg:justify-self-start"
             >
-              {pill}
-            </span>
-          ))}
+              <IframePreview
+                url={project.liveUrl}
+                title={project.previewTitle}
+              />
+            </div>
+
+            <div id="overview" className="min-w-0 scroll-mt-20">
+              <h2 className="mb-6 text-2xl font-semibold text-ink sm:text-3xl">
+                Overview
+              </h2>
+              <p className="max-w-3xl text-sm text-stone-700 sm:text-base">
+                {project.overview}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2 text-[11px] text-stone-700">
+                {project.pills.map((pill) => (
+                  <span
+                    key={pill}
+                    className="rounded-full border border-stone-200 bg-stone-50 px-3 py-1"
+                  >
+                    {pill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* Details */}
       <Section id="details" title="Project details">
@@ -68,31 +86,7 @@ export default function WorkDetailPage() {
             <p key={i}>{paragraph}</p>
           ))}
         </div>
-      </Section>
-
-      {/* Live Preview */}
-      <Section id="preview" title="Live preview">
-        <div className="rounded-3xl overflow-hidden bg-white shadow-sm">
-          <div className="bg-stone-100 text-white/80">
-            <div className="text-xs uppercase tracking-[0.2em] px-6 pt-4 pb-2 text-accent-400" />
-            <IframePreview
-              url={project.liveUrl}
-              title={project.previewTitle}
-            />
-          </div>
-        </div>
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="sparkle-btn relative inline-flex items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500"
-          >
-            <span className="sparkle-layer" aria-hidden />
-            <span className="relative z-10">Visit live site ↗</span>
-          </a>
-
+        <div className="mt-8">
           <Link
             href="/work"
             className="inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-ink hover:border-stone-400"

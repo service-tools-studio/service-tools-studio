@@ -211,7 +211,7 @@ export default function IntakeForm() {
   "
         >
           <span className="sparkle-layer" aria-hidden />
-          <span className="relative z-10">Send project details</span>
+          <span className="relative z-10">Get your website plan ✨</span>
         </button>
 
         <p className="text-xs text-stone-500">

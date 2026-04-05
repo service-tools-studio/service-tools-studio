@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { CALENDLY_URL } from '@/app/constants';
-import { usePathname } from 'next/navigation';
+import { CALENDLY_URL } from "@/app/constants";
+import { usePathname } from "next/navigation";
 
 export const site = {
   cta: {
@@ -9,185 +8,128 @@ export const site = {
       href: CALENDLY_URL,
     },
     intake: {
-      label: "Project intake form",
+      label: "Start your project",
       href: "/intake",
     },
   },
 
   footer: {
     finePrint: `© ${new Date().getFullYear()} Service Tools Studio LLC`,
-    note:
-      "We build websites for service business owners.",
+    note: "We build websites for service businesses.",
   },
 } as const;
 
+function FooterCTA() {
+  return (
+    <section className="py-16 sm:py-20">
+      <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+        <h2 className="text-3xl font-semibold tracking-tight text-fg sm:text-4xl">
+          Ready to move forward?
+        </h2>
+
+        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-fg/70">
+          Book a call or start your project — we’ll guide you from there.
+        </p>
+
+        <div className="mt-8 flex flex-col items-center gap-3">
+          <a
+            href={site.cta.calendly.href}
+            target="_blank"
+            rel="noreferrer"
+            className="
+              sparkle-btn sparkle-btn--ink
+              relative inline-flex items-center justify-center
+              overflow-hidden rounded-full px-6 py-3
+              text-sm font-medium text-white transition-all duration-500
+            "
+          >
+            <span className="sparkle-layer" aria-hidden />
+            <span className="relative z-10 flex items-center gap-2">
+              {site.cta.calendly.label}
+            </span>
+          </a>
+
+          <p className="text-sm text-fg/50">or</p>
+
+          <a
+            href={site.cta.intake.href}
+            className="text-sm font-medium text-fg underline underline-offset-4 transition hover:text-fg/80"
+          >
+            {site.cta.intake.label} →
+          </a>
+
+          <p className="mt-1 text-sm text-fg/50">
+            No pressure. We’ll recommend the best path.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PortlandNote() {
+  return (
+    <div className="pb-12 sm:pb-14">
+      <div className="mx-auto max-w-xl px-4 sm:px-6">
+        <div className="rounded-3xl bg-muted/40 px-6 py-6 text-center sm:px-8 sm:py-8">
+          <div className="text-2xl" aria-hidden>
+            ☕️
+          </div>
+
+          <h3 className="mt-3 text-base font-semibold text-fg sm:text-lg">
+            Optional in-person planning (Portland)
+          </h3>
+
+          <p className="mt-3 text-sm leading-relaxed text-fg/70 sm:text-base">
+            Prefer meeting in person? Coffee shop, co-working, or your space.
+            Just note it in your{" "}
+            <a
+              href="/intake"
+              className="font-medium text-fg underline underline-offset-2 hover:text-fg/90"
+            >
+              intake form
+            </a>{" "}
+            and we’ll make it happen.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FooterMeta() {
+  return (
+    <div className="border-t border-border/60 py-6">
+      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 text-center sm:px-6 sm:text-left md:flex-row md:items-center md:justify-between">
+        <div className="text-sm text-fg/60">{site.footer.finePrint}</div>
+
+        {site.footer.note && (
+          <div className="text-sm text-fg/50">{site.footer.note}</div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function SiteFooter() {
   const pathname = usePathname();
-  const isIntakePage = pathname === '/intake';
-  const isHomePage = pathname === '/';
+  const isIntakePage = pathname === "/intake";
+  const isHomePage = pathname === "/";
+
   if (isIntakePage || isHomePage) {
     return (
       <footer className="bg-bg">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
-
-          {/* CTA block */}
-          <div className="mb-10 rounded-3xl bg-muted/40 p-6 sm:p-8">
-            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-start md:gap-8">
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href={site.cta.calendly.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="
-                  sparkle-btn sparkle-btn--ink
-                  relative inline-flex items-center justify-center
-                  overflow-hidden
-                  rounded-full
-                  px-6 py-2.5
-                  text-sm font-medium text-white
-                  transition-all duration-500
-                "
-                >
-                  {/* Sparkle background layer */}
-                  <span className="sparkle-layer" aria-hidden />
-
-                  {/* Button content */}
-                  <span className="relative z-10 flex items-center gap-2">
-                    {site.cta.calendly.label}
-                  </span>
-                </a>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-semibold text-fg">
-                  Prefer a call?
-                </h3>
-                <p className="mt-2 max-w-xl text-sm text-fg/70">
-                  Book a short call to discuss your project.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Trust badges */}
-          <div className="mb-8 flex flex-col gap-4 sm:gap-5">
-            {/* In-person meeting — star-shaped hero badge */}
-            <div
-              className="footer-in-person-star mx-auto flex max-w-md flex-col items-center justify-center gap-2 bg-accent-50 px-6 py-6 sm:px-8 sm:py-8 text-center shadow-[0_0_0_2px_rgba(222,71,163,0.35)] drop-shadow-md"
-              role="img"
-              aria-label="Optional in-person website planning in Portland"
-            >
-              <span className="text-2xl sm:text-3xl" aria-hidden>☕️</span>
-              <p className="text-sm font-semibold text-fg sm:text-base">
-                Optional in-person planning in Portland
-              </p>
-              <p className="text-xs text-fg/70 sm:text-sm leading-snug">
-                Sick of Zoom meetings? Are you the kind of person who prefers to meet in person? (Me too!)
-                Coffee shop, co-working space, or wherever you feel comfortable — your spot or mine.
-                Just let me know on your <a href="/intake" className="font-medium text-fg underline underline-offset-2 hover:text-fg/90">intake form</a> and we'll make it happen.
-              </p>
-            </div>
-          </div>
-
-          {/* Footer meta */}
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="text-sm text-fg/60">{site.footer.finePrint}</div>
-
-            {site.footer.note && (
-              <div className="max-w-md text-xs text-fg/50">
-                {site.footer.note}
-              </div>
-            )}
-          </div>
-        </div>
+        <PortlandNote />
+        <FooterMeta />
       </footer>
     );
   }
 
   return (
     <footer className="bg-bg">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
-
-        {/* CTA block */}
-        <div className="mb-10 rounded-3xl bg-muted/40 p-6 sm:p-8">
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <h3 className="text-lg font-semibold text-fg">
-                Ready to move forward?
-              </h3>
-              <p className="mt-2 max-w-xl text-sm text-fg/70">
-                Book a short call or fill out the intake form to get started.
-                We'll reply with next steps.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              <a
-                href={site.cta.calendly.href}
-                target="_blank"
-                rel="noreferrer"
-                className="
-                  sparkle-btn sparkle-btn--ink
-                  relative inline-flex items-center justify-center
-                  overflow-hidden
-                  rounded-full
-                  px-6 py-2.5
-                  text-sm font-medium text-white
-                  transition-all duration-500
-                "
-              >
-                {/* Sparkle background layer */}
-                <span className="sparkle-layer" aria-hidden />
-
-                {/* Button content */}
-                <span className="relative z-10 flex items-center gap-2">
-                  {site.cta.calendly.label}
-                </span>
-              </a>
-
-              <a
-                href={site.cta.intake.href}
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-border bg-bg px-5 py-3 text-sm font-semibold text-fg hover:bg-muted"
-              >
-                {site.cta.intake.label}
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Trust badges */}
-        <div className="mb-8 flex flex-col gap-4 sm:gap-5">
-          {/* In-person meeting — star-shaped hero badge */}
-          <div
-            className="footer-in-person-star mx-auto flex max-w-md flex-col items-center justify-center gap-2 bg-accent-50 px-6 py-6 sm:px-8 sm:py-8 text-center shadow-[0_0_0_2px_rgba(222,71,163,0.35)] drop-shadow-md"
-            role="img"
-            aria-label="Optional in-person website planning in Portland"
-          >
-            <span className="text-2xl sm:text-3xl" aria-hidden>☕️</span>
-            <p className="text-sm font-semibold text-fg sm:text-base">
-              Optional in-person planning in Portland
-            </p>
-            <p className="text-xs text-fg/70 sm:text-sm leading-snug">
-              Sick of Zoom meetings? Are you the kind of person who prefers to meet in person? (Me too!)
-              Coffee shop, co-working space, or wherever you feel comfortable — your spot or mine.
-              Just let me know on your <a href="/intake" className="font-medium text-fg underline underline-offset-2 hover:text-fg/90">intake form</a> and we'll make it happen.
-            </p>
-          </div>
-        </div>
-
-        {/* Footer meta */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-sm text-fg/60">{site.footer.finePrint}</div>
-
-          {site.footer.note && (
-            <div className="max-w-md text-xs text-fg/50">
-              {site.footer.note}
-            </div>
-          )}
-        </div>
-      </div>
+      <FooterCTA />
+      <PortlandNote />
+      <FooterMeta />
     </footer>
   );
 }

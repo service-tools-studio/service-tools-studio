@@ -1,11 +1,13 @@
 export default function Section({
   id,
+  eyebrow,
   title,
   className,
   style,
   children,
 }: {
   id: string;
+  eyebrow?: string;
   title?: string;
   className?: string;
   style?: React.CSSProperties;
@@ -18,8 +20,18 @@ export default function Section({
       style={style}
     >
       <div className="mx-auto w-full min-w-0 max-w-5xl px-4 mb-10">
+        {eyebrow && (
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
+            {eyebrow}
+          </p>
+        )}
         {title && (
-          <h2 className="mb-6 text-2xl sm:text-3xl font-semibold text-ink">
+          <h2
+            className={[
+              eyebrow ? 'mt-3 ' : '',
+              'mb-6 text-2xl sm:text-3xl font-semibold text-ink',
+            ].join('')}
+          >
             {title}
           </h2>
         )}

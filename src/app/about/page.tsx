@@ -9,7 +9,7 @@ export default function AboutPage() {
         title="Service Tools Studio"
         description="A bit about Jasmin, the founder of Service Tools Studio, and her background in web development and web-based software engineering."
       />
-      <div className='py-5 px-10'>
+      <div className="mx-auto max-w-5xl px-4 py-5">
         <About />
       </div>
     </>

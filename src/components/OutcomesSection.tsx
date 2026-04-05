@@ -27,8 +27,11 @@ export default function OutcomesSection() {
   ];
 
   return (
-    <section className="py-20 px-6 md:px-12 bg-[#F9F7FB]">
-      <div className="max-w-6xl mx-auto">
+    <section
+      id="outcomes"
+      className="scroll-mt-20 mb-10 w-full bg-[#F9F7FB] py-20"
+    >
+      <div className="mx-auto w-full min-w-0 max-w-5xl px-4">
         {/* Heading */}
         <div className="max-w-2xl mb-6">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
