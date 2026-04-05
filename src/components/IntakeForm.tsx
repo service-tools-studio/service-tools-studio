@@ -220,24 +220,21 @@ export default function IntakeForm() {
       </div>
     </form>
 
-    {/* {
-      CALENDLY_URL && (
-        <div className="mt-6 rounded-2xl bg-white p-4 text-sm text-ink/90 shadow-sm">
-          <p>
-            Prefer to talk it through first?{' '}
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium text-ink underline underline-offset-2 hover:text-ink/90"
-            >
-              Book a short intro call
-            </a>{' '}
-            —we&apos;re happy to walk you through the process with zero tech speak.
-          </p>
-        </div>
-      )
-    } */}
+    {CALENDLY_URL && (
+      <div className="mt-6 rounded-2xl bg-white p-4 text-sm text-ink/90 shadow-sm">
+        <p>
+          Prefer to talk it through first?{' '}
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium text-ink underline underline-offset-2 hover:text-ink/90"
+          >
+            Book a short intro call
+          </a>
+        </p>
+      </div>
+    )}
   </>
   )
 }

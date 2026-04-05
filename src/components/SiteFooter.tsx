@@ -67,36 +67,6 @@ function FooterCTA() {
   );
 }
 
-function PortlandNote() {
-  return (
-    <div className="pb-12 sm:pb-14">
-      <div className="mx-auto max-w-xl px-4 sm:px-6">
-        <div className="rounded-3xl bg-muted/40 px-6 py-6 text-center sm:px-8 sm:py-8">
-          <div className="text-2xl" aria-hidden>
-            ☕️
-          </div>
-
-          <h3 className="mt-3 text-base font-semibold text-fg sm:text-lg">
-            Optional in-person planning (Portland)
-          </h3>
-
-          <p className="mt-3 text-sm leading-relaxed text-fg/70 sm:text-base">
-            Prefer meeting in person? Coffee shop, co-working, or your space.
-            Just note it in your{" "}
-            <a
-              href="/intake"
-              className="font-medium text-fg underline underline-offset-2 hover:text-fg/90"
-            >
-              intake form
-            </a>{" "}
-            and we’ll make it happen.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function FooterMeta() {
   return (
     <div className="border-t border-border/60 py-6">
@@ -119,7 +89,6 @@ export default function SiteFooter() {
   if (isIntakePage || isHomePage) {
     return (
       <footer className="bg-bg">
-        <PortlandNote />
         <FooterMeta />
       </footer>
     );
@@ -128,7 +97,6 @@ export default function SiteFooter() {
   return (
     <footer className="bg-bg">
       <FooterCTA />
-      <PortlandNote />
       <FooterMeta />
     </footer>
   );
