@@ -12,7 +12,7 @@ export default function PageTopSection({
   return (
     <section className="bg-lavender mb-10">
       <div className="mx-auto max-w-5xl px-4 py-14 sm:py-18">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-700 shimmer-text">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-600">
           {slug}
         </p>
         <h1 className="mt-3 text-3xl sm:text-4xl font-semibold text-ink">

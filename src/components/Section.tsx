@@ -3,6 +3,7 @@ export default function Section({
   eyebrow,
   title,
   className,
+  titleClassName,
   style,
   children,
 }: {
@@ -10,6 +11,7 @@ export default function Section({
   eyebrow?: string;
   title?: string;
   className?: string;
+  titleClassName?: string;
   style?: React.CSSProperties;
   children: React.ReactNode;
 }) {
@@ -21,7 +23,7 @@ export default function Section({
     >
       <div className="mx-auto w-full min-w-0 max-w-5xl px-4 mb-10">
         {eyebrow && (
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-600">
             {eyebrow}
           </p>
         )}
@@ -29,7 +31,8 @@ export default function Section({
           <h2
             className={[
               eyebrow ? 'mt-3 ' : '',
-              'mb-6 text-2xl sm:text-3xl font-semibold text-ink',
+              'mb-6 text-3xl sm:text-4xl lg:text-5xl font-semibold text-ink',
+              titleClassName || '',
             ].join('')}
           >
             {title}

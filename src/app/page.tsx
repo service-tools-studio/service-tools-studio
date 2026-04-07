@@ -40,7 +40,7 @@ export default function HomePage() {
             >
               <div className="order-1 flex flex-col lg:order-2 lg:flex-1 lg:min-w-0 lg:justify-start lg:self-start lg:px-10 xl:px-12 2xl:pr-[max(2.5rem,calc((100vw-80rem)/2+3rem))]">
                 <div className="@container mx-auto flex w-full max-w-xl min-w-0 flex-col lg:mx-0 lg:max-w-none">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-600">
                     Done for you · Two-week delivery
                   </p>
                   <h1 className="mt-3 max-w-full min-w-0 font-semibold leading-[1.08] text-ink text-[clamp(0.6875rem,calc(100cqw/12),6rem)]">
@@ -51,7 +51,7 @@ export default function HomePage() {
                   </h1>
                   <div className="mt-4 flex flex-col gap-2 text-[9px] font-medium text-zinc-700 sm:text-xs">
                     <div className="flex items-center gap-2">
-                      <div className="flex items-center gap-0.5 text-[11px] leading-none text-accent sm:text-[13px]">
+                      <div className="flex items-center gap-0.5 text-[11px] leading-none text-stone-900 sm:text-[13px]">
                         <span>★</span>
                         <span>★</span>
                         <span>★</span>
@@ -70,20 +70,20 @@ export default function HomePage() {
                     </div>
 
                     <p className="font-normal italic leading-relaxed text-zinc-600">
-                      “She brought my vision to life perfectly.”
+                      “I couldn’t be happier with the result. Highly recommend!” <span className="not-italic font-normal leading-relaxed text-zinc-600">— Tess, owner of Conscious Movement</span>
                     </p>
                   </div>
-                  <p className="mt-6 max-w-xl text-[10px] leading-snug text-stone-600 sm:text-sm sm:leading-relaxed">
+                  <p className="mt-6 max-w-xl text-[14px] leading-snug text-stone-600 sm:text-sm sm:leading-relaxed">
                     We build high-converting websites in 2 weeks — so you can focus on running your business.
                   </p>
 
                   <div className="mt-6 flex flex-wrap gap-3">
                     <a
                       href="/intake"
-                      className="sparkle-btn inline-flex relative items-center justify-center overflow-hidden rounded-full px-4 py-2 text-xs font-medium text-white shadow-sm transition-all duration-500 sm:px-6 sm:py-2.5 sm:text-sm"
+                      className="sparkle-btn inline-flex relative items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500 sm:px-6 sm:py-2.5 sm:text-sm"
                     >
                       <span className="sparkle-layer" />
-                      <span className="relative z-10">Start your site (2-min form)</span>
+                      <span className="relative z-10">Start your site (2-min form) ✨</span>
                     </a>
                     {/* <a
                   href="/services"
@@ -111,7 +111,7 @@ export default function HomePage() {
             </div>
 
             <div
-              className="pointer-events-none h-[3px] w-[100vw] shrink-0 bg-ink relative left-1/2 -translate-x-1/2"
+              className="pointer-events-none h-[1px] w-[100vw] shrink-0 bg-ink relative left-1/2 -translate-x-1/2"
               aria-hidden
             />
 

@@ -23,10 +23,10 @@ export default function ProcessSection() {
       viewport={SECTION_VIEWPORT}
     >
       <div className="mx-auto mb-10 w-full min-w-0 max-w-5xl px-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-600">
           our simple process
         </p>
-        <h2 className="mt-3 mb-6 text-2xl font-semibold text-ink sm:text-3xl">How it works</h2>
+        <h2 className="mt-3 mb-6 text-2xl font-semibold text-ink sm:text-3xl lg:text-5xl">How it works</h2>
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROCESS_STEPS.map((step) => (

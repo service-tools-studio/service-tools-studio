@@ -1,13 +1,3 @@
-'use client';
-
-import { motion, useReducedMotion } from 'framer-motion';
-import {
-  CARD_VIEWPORT,
-  SECTION_VIEWPORT,
-  cardItemVariants,
-  sectionRevealVariants,
-} from '@/components/sectionRevealMotion';
-
 const ITEMS = [
   {
     title: 'Built-in tools',
@@ -33,21 +23,14 @@ const ITEMS = [
 ] as const;
 
 export default function OutcomesSection() {
-  const reduceMotion = useReducedMotion();
-  const itemVariants = cardItemVariants(reduceMotion);
-
   return (
-    <motion.section
+    <section
       id="outcomes"
-      className="scroll-mt-20 mb-10 w-full bg-[#F9F7FB] py-20"
-      variants={sectionRevealVariants}
-      initial={reduceMotion ? 'visible' : 'hidden'}
-      whileInView={reduceMotion ? undefined : 'visible'}
-      viewport={SECTION_VIEWPORT}
+      className="scroll-mt-20 mb-10 w-full bg-accent/10 py-20"
     >
       <div className="mx-auto w-full min-w-0 max-w-5xl px-4">
         <div className="mb-6 max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent shimmer-text">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-600">
             What's included
           </p>
           <h2 className="mt-3 mb-10 text-2xl font-semibold text-ink sm:text-3xl lg:text-5xl">
@@ -57,21 +40,17 @@ export default function OutcomesSection() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {ITEMS.map((item, i) => (
-            <motion.div
+            <div
               key={i}
-              variants={itemVariants}
-              initial={reduceMotion ? 'visible' : 'hidden'}
-              whileInView={reduceMotion ? undefined : 'visible'}
-              viewport={CARD_VIEWPORT}
               className="rounded-2xl bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md"
             >
               <div className="mb-4 text-2xl">{item.icon}</div>
               <h3 className="mb-2 text-xl font-semibold text-ink">{item.title}</h3>
               <p className="text-sm text-gray-600">{item.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
