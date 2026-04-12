@@ -77,10 +77,10 @@ export default function HomePage() {
                     We build high-converting websites in 2 weeks — so you can focus on running your business.
                   </p>
 
-                  <div className="mt-6 flex flex-wrap gap-3">
+                  <div className="mt-6 flex w-full flex-wrap gap-3">
                     <a
                       href="/intake"
-                      className="sparkle-btn inline-flex relative items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500 sm:px-6 sm:py-2.5 sm:text-sm"
+                      className="sparkle-btn relative inline-flex w-full items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500 sm:w-auto sm:px-6 sm:py-2.5 sm:text-sm"
                     >
                       <span className="sparkle-layer" />
                       <span className="relative z-10">Start your site (2-min form) ✨</span>
