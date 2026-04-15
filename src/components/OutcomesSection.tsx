@@ -32,7 +32,7 @@ export default function OutcomesSection() {
   return (
     <section
       id="outcomes"
-      className="scroll-mt-20 mb-10 w-full bg-accent/10 py-20"
+      className="scroll-mt-20 w-full bg-accent/10 py-20"
     >
       <div className="mx-auto w-full min-w-0 max-w-5xl px-4">
         <div className="mb-6 max-w-2xl">

@@ -84,9 +84,10 @@ function FooterMeta() {
 export default function SiteFooter() {
   const pathname = usePathname();
   const isIntakePage = pathname === "/intake";
+  const isCleaningPage = pathname === "/cleaning";
   const isHomePage = pathname === "/";
 
-  if (isIntakePage || isHomePage) {
+  if (isIntakePage || isHomePage || isCleaningPage) {
     return (
       <footer className="bg-bg">
         <FooterMeta />

@@ -3,11 +3,18 @@ import { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 
-const navItems = [
+const navItemsDefault = [
   { href: '/work', label: 'Our work' },
   { href: '/process', label: 'How it works' },
   { href: '/about', label: 'About us' },
   { href: '/intake', label: 'Get started' },
+]
+
+const navItemsCleaning = [
+  { href: '#case-study', label: 'Case Study' },
+  { href: '#process', label: 'How it works' },
+  { href: '#about', label: 'About us' },
+  { href: '#intake', label: 'Get started' },
 ]
 
 export default function SiteHeader() {
@@ -15,10 +22,19 @@ export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [photoOpen, setPhotoOpen] = useState(false);
   const pathname = usePathname();
+  const isCleaningPage = pathname === '/cleaning';
+
+  let navItems = navItemsDefault;
+
+  if (isCleaningPage) {
+    navItems = navItemsCleaning;
+  } else {
+    navItems = navItemsDefault;
+  }
 
 
   function scrollToTop() {
-    if (pathname === '/') {
+    if (pathname === '/' || pathname === '/cleaning') {
       window.scrollTo({
         top: 0,
         behavior: 'smooth',

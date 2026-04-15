@@ -7,11 +7,13 @@ import Section from '@/components/Section';
 import Services from '@/components/Services';
 import About from '@/components/About';
 import type { Project } from '@/types';
-import { CONTACT_EMAIL, CALENDLY_URL, GOOGLE_REVIEWS_URL, PROJECTS } from './constants';
+import { CONTACT_EMAIL, CALENDLY_URL, GOOGLE_REVIEWS_URL, PROJECTS } from '../constants';
 import ProcessSection from '@/components/ProcessSection';
 import IntakeForm from '@/components/IntakeForm';
-import ProjectCardsCarousel from '@/components/ProjectCardsCarousel';
+import ProjectCard from '@/components/ProjectCard';
 import OutcomesSection from '@/components/OutcomesSection';
+import IframePreview from '@/components/IframePreview';
+import Link from 'next/link';
 
 
 export default function HomePage() {
@@ -38,13 +40,13 @@ export default function HomePage() {
                 'lg:flex-row lg:items-start lg:gap-10 xl:gap-14',
               ].join(' ')}
             >
-              <div className="order-1 flex flex-col lg:order-2 lg:flex-1 lg:min-w-0 lg:justify-start lg:self-start lg:px-10 xl:px-12 2xl:pr-[max(2.5rem,calc((100vw-80rem)/2+3rem))]">
+              <div className="order-1 flex flex-col lg:order-2 lg:flex-1 lg:min-w-0 lg:justify-start lg:self-start lg:-ml-8 lg:pl-0 lg:pr-14 xl:-ml-10 xl:pl-0 xl:pr-20 2xl:pr-[max(4rem,calc((100vw-80rem)/2+4.5rem))]">
                 <div className="@container mx-auto flex w-full max-w-xl min-w-0 flex-col lg:mx-0 lg:max-w-none">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-600">
                     Done for you · Two-week delivery
                   </p>
-                  <h1 className="mt-3 max-w-full min-w-0 font-semibold leading-[1.08] text-ink text-[clamp(0.6875rem,calc(100cqw/12),6rem)]">
-                    <span className="block whitespace-nowrap">You run the business.</span>
+                  <h1 className="mt-3 max-w-full min-w-0 font-semibold leading-[1.08] text-ink text-[clamp(0.6875rem,calc(100cqw/16),4.25rem)]">
+                    <span className="block whitespace-nowrap">You run the cleaning business.</span>
                     <span className="block whitespace-nowrap">
                       We build the <span className="font-bold">website</span>.
                     </span>
@@ -74,23 +76,17 @@ export default function HomePage() {
                     </p>
                   </div>
                   <p className="mt-6 max-w-none text-[14px] leading-snug text-stone-600 sm:text-sm sm:leading-relaxed">
-                    We build websites that help local service businesses get more leads, more calls, and more bookings — without you having to deal with the tech.
+                    We build websites that help local cleaning businesses get more leads, more calls, and more bookings — without you having to deal with the tech.
                   </p>
 
                   <div className="mt-6 flex w-full flex-wrap gap-3">
                     <a
-                      href="/intake"
+                      href="/cleaning#intake"
                       className="sparkle-btn relative inline-flex w-full items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500 sm:w-auto sm:px-6 sm:py-2.5 sm:text-sm"
                     >
                       <span className="sparkle-layer" />
-                      <span className="relative z-10">See how your site could convert better ✨</span>
+                      <span className="relative z-10">See how your site could get more bookings ✨</span>
                     </a>
-                    {/* <a
-                  href="/services"
-                  className="inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-ink hover:border-stone-400"
-                >
-                  See what we build
-                </a> */}
                   </div>
                 </div>
               </div>
@@ -115,58 +111,76 @@ export default function HomePage() {
               aria-hidden
             />
 
-            {/* {!isDesktop && <div className="mt-6 flex w-full justify-center lg:mt-0 lg:px-10 lg:pt-10 xl:px-12 xl:pt-12">
-              <p className="max-w-xl text-center text-sm text-stone-600 sm:text-base lg:max-w-3xl lg:text-base">
-                Tell us about your business and we'll build you a site that turns visitors into booked customers — with tools like instant quote calculators and online booking built right in. We're a Portland-based studio specializing in service businesses. We handle everything from design to launch in two weeks, so you can focus on the business you love.
-              </p>
-            </div>} */}
           </div>
-
-          {/* <div className="mx-auto max-w-3xl px-4">
-            <a
-              href="#about"
-              aria-label="Go to About Service Tools Studio section"
-              className={[
-                "group my-6 block rounded-2xl bg-white p-4 shadow-sm",
-                "transition-all duration-300",
-                "hover:-translate-y-0.5 hover:border-accent/25 hover:bg-accent/10 hover:shadow-sm",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              ].join(" ")}
-            >
-              <div className="flex items-start gap-4">
-                <Image
-                  src="/images/professional-headshot.jpg"
-                  alt="Jasmin, founder of Service Tools Studio"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 shrink-0 rounded-full border border-stone-200 object-cover"
-                  priority={false}
-                />
-
-                <p className="text-sm leading-snug text-stone-600">
-                  <span className="font-semibold text-ink">I'm Jasmin, owner and founder of Service Tools Studio.</span> — I'm a Portland-based developer with 7 years of experience building production websites. By day, I work for Nike. On the side, I build custom websites from scratch. I love turning ideas into something real that works for your business.
-                </p>
-              </div>
-            </a>
-          </div> */}
 
         </section>
 
-        {/* Outcomes — full-width band; inner max-w-5xl px-4 matches Section / #process */}
         <OutcomesSection />
-        <div className="my-25" />
 
-        {/* Projects */}
-        <Section
-          id="projects"
-          eyebrow="Case studies"
-          title="Sites we’ve built"
-          className="bg-white"
-        >
-          <ProjectCardsCarousel projects={projects} />
-        </Section>
+        <div id="case-study" className="bg-lavender">
+          <section className="from-accent-50 to-accent-100">
+            <div className="mx-auto max-w-5xl px-4 py-14 sm:py-20">
 
-        <div className="my-25" />
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-600">
+                Case Study
+              </p>
+              <h1 className="mt-4 text-3xl sm:text-4xl font-semibold text-ink">
+                {PROJECTS[0].title}
+              </h1>
+
+              {PROJECTS[0].subtitle && (
+                <p className="mt-2 text-sm sm:text-base text-stone-600">
+                  {PROJECTS[0].subtitle}
+                </p>
+              )}
+            </div>
+          </section>
+
+          {/* Preview + overview: preview first on mobile; iframe left, copy right on lg */}
+          <section className="scroll-mt-20">
+            <div className="mx-auto w-full min-w-0 max-w-5xl px-4 mb-10">
+              <div className="grid grid-cols-1 gap-8 lg:grid-cols-[min(40vw,520px)_minmax(0,1fr)] lg:items-start lg:gap-10 xl:gap-12">
+                <div
+                  id="preview"
+                  className="w-full min-w-0 scroll-mt-20 justify-self-center lg:justify-self-start"
+                >
+                  <IframePreview
+                    url={PROJECTS[0].liveUrl}
+                    title={PROJECTS[0].previewTitle}
+                  />
+                </div>
+
+                <div id="overview" className="min-w-0 scroll-mt-20">
+                  <h2 className="mb-6 text-2xl font-semibold text-ink sm:text-3xl">
+                    Overview
+                  </h2>
+                  <p className="max-w-3xl text-sm text-stone-700 sm:text-base">
+                    {PROJECTS[0].overview}
+                  </p>
+                  <div className="mt-6 flex flex-wrap gap-2 text-[11px] text-stone-700">
+                    {PROJECTS[0].pills.map((pill) => (
+                      <span
+                        key={pill}
+                        className="rounded-full border border-stone-200 bg-stone-50 px-3 py-1"
+                      >
+                        {pill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div className="mx-auto w-full min-w-0 max-w-5xl px-4 pb-25">
+            <div className="max-w-3xl space-y-4 text-sm text-stone-700">
+              {PROJECTS[0].description.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+
+        </div>
 
         {/* Process — motion matches Outcomes (shared sectionReveal + per-card viewport) */}
         <ProcessSection />
@@ -184,7 +198,7 @@ export default function HomePage() {
         {/* Intake form */}
         <Section
           id="intake"
-          title="Ready? Tell us about your business"
+          title="Ready? Tell us about your cleaning business"
           className="py-12 sm:py-14 lg:py-16"
           style={{
             backgroundColor:
