@@ -70,11 +70,11 @@ export default function HomePage() {
                     </div>
 
                     <p className="font-normal italic leading-relaxed text-zinc-600">
-                      “I couldn’t be happier with the result. Highly recommend!” <span className="not-italic font-normal leading-relaxed text-zinc-600">— Tess, owner of Conscious Movement</span>
+                      “Since launching, I've seen a clear increase in leads, income, and credibility. I highly recommend Service Tools Studio.” <span className="not-italic font-normal leading-relaxed text-zinc-600">— Kelsey, owner of Golden Hour Cleaning Co.</span>
                     </p>
                   </div>
-                  <p className="mt-6 max-w-xl text-[14px] leading-snug text-stone-600 sm:text-sm sm:leading-relaxed">
-                    We build high-converting websites in 2 weeks — so you can focus on running your business.
+                  <p className="mt-6 max-w-none text-[14px] leading-snug text-stone-600 sm:text-sm sm:leading-relaxed">
+                    We build websites that help local service businesses get more leads, more calls, and more bookings — without you having to deal with the tech.
                   </p>
 
                   <div className="mt-6 flex w-full flex-wrap gap-3">
