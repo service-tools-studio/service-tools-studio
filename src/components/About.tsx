@@ -32,6 +32,17 @@ export default function About() {
         </p>
         <p>📍 <strong>Locally owned in Portland, OR</strong> — serving clients across the US and worldwide.</p>
 
+        <div className="mt-6 space-y-2 text-sm text-ink/80">
+          <p>✓ 7+ years building real-world web systems</p>
+          <p>✓ Experience working on large-scale platforms at Nike</p>
+          <p>✓ Focused on clarity, conversion, and simplicity</p>
+        </div>
+
+        <div className="mt-6">
+          <a href="#intake" className="text-sm font-medium text-primary hover:underline">
+            → Get my recommendation
+          </a>
+        </div>
         <div className="clear-right mt-4 flex items-center gap-2">
           <a
             href="https://www.linkedin.com/in/jasminmirandab/"

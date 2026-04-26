@@ -10,12 +10,13 @@
   --color-accent-400: rgb(61 191 184 / 0.7);
   --color-accent-700: #3dbfb8;
   --color-accent: #3dbfb8;
-  /* Manrope + Roboto Mono via next/font on <html> */
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-roboto-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
-    Consolas, monospace;
+  /* Source Sans 3 body / UI; Playfair Display headings; Roboto Mono for code/mono */
+  --font-sans: var(--font-source-sans-3), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", ui-serif, serif;
   --font-mono: var(--font-roboto-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, monospace;
+  /* Headings — Playfair Display via next/font on <html> */
+  --font-heading: var(--font-playfair), Georgia, "Times New Roman", ui-serif, serif;
 }
 
 :root {
@@ -43,10 +44,10 @@ body {
   color: var(--text-primary);
 }
 
-/* Preflight sets font on `html`; Manrope for UI, Roboto Mono for headings */
+/* Preflight sets font on `html`; Source Sans 3 for UI/body, Playfair Display for headings */
 @layer base {
   html {
-    font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-source-sans-3), ui-sans-serif, system-ui, sans-serif;
   }
 
   h1,
@@ -55,10 +56,8 @@ body {
   h4,
   h5,
   h6 {
-    font-family: var(--font-roboto-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
-      Consolas, monospace;
-    /* Tighter tracking — letters sit closer */
-    letter-spacing: -0.06em;
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
   }
 }
 
@@ -185,4 +184,12 @@ body {
   background-image: none;
   box-shadow: 0 0 30px rgba(76, 20, 98, 0.48);
   transform: translateY(-1px);
+}
+
+body {
+  font-family: var(--font-source-sans-3), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-serif {
+  font-family: var(--font-heading);
 }

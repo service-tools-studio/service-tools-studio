@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Layout, RefreshCcw, Zap } from 'lucide-react';
+import { PRIMARY_CTA_CLASSNAME } from '@/app/constants';
 
 type Service = {
   key: string;
@@ -214,17 +215,20 @@ export default function Services() {
                 {/* Details toggle button — below content, matches ProjectCard "View details" style */}
                 <div className="mt-4 flex justify-end">
                   <span
-                    className="sparkle-btn inline-flex items-center justify-center gap-1.5 rounded-full bg-stone-900 px-4 py-2 text-xs font-medium text-stone-50 transition hover:bg-stone-800"
+                    className={`${PRIMARY_CTA_CLASSNAME} pointer-events-none inline-flex px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm`}
                   >
-                    {isOpen ? 'Collapse' : 'Details'}
-                    <span
-                      className={[
-                        'inline-block text-[10px] transition-transform duration-300',
-                        isOpen ? 'rotate-180' : '',
-                      ].join(' ')}
-                      aria-hidden
-                    >
-                      ▾
+                    <span className="sparkle-layer" aria-hidden />
+                    <span className="relative z-10 inline-flex items-center gap-1.5">
+                      {isOpen ? 'Collapse' : 'Details'}
+                      <span
+                        className={[
+                          'inline-block text-[10px] transition-transform duration-300',
+                          isOpen ? 'rotate-180' : '',
+                        ].join(' ')}
+                        aria-hidden
+                      >
+                        ▾
+                      </span>
                     </span>
                   </span>
                 </div>

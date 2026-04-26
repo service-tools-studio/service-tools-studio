@@ -1,4 +1,4 @@
-import { CALENDLY_URL } from "@/app/constants";
+import { CALENDLY_URL, PRIMARY_CTA_CLASSNAME } from "@/app/constants";
 import { usePathname } from "next/navigation";
 
 export const site = {
@@ -36,12 +36,7 @@ function FooterCTA() {
             href={site.cta.calendly.href}
             target="_blank"
             rel="noreferrer"
-            className="
-              sparkle-btn sparkle-btn--ink
-              relative inline-flex items-center justify-center
-              overflow-hidden rounded-full px-6 py-3
-              text-sm font-medium text-white transition-all duration-500
-            "
+            className={PRIMARY_CTA_CLASSNAME}
           >
             <span className="sparkle-layer" aria-hidden />
             <span className="relative z-10 flex items-center gap-2">

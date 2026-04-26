@@ -2,31 +2,29 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import { PROCESS_STEPS } from '@/components/processSteps';
-import {
-  CARD_VIEWPORT,
-  SECTION_VIEWPORT,
-  cardItemVariants,
-  sectionRevealVariants,
-} from '@/components/sectionRevealMotion';
+import { CARD_VIEWPORT, cardItemVariants } from '@/components/sectionRevealMotion';
 
 export default function ProcessSection() {
   const reduceMotion = useReducedMotion();
   const itemVariants = cardItemVariants(reduceMotion);
 
   return (
-    <motion.section
+    <section
       id="process"
-      className="scroll-mt-20 bg-accent-50 py-16 sm:py-20"
-      variants={sectionRevealVariants}
-      initial={reduceMotion ? 'visible' : 'hidden'}
-      whileInView={reduceMotion ? undefined : 'visible'}
-      viewport={SECTION_VIEWPORT}
+      className="scroll-mt-20 w-full bg-gradient-to-br from-[#f4ebe6] to-[#eee2ff] py-16 sm:py-20"
     >
       <div className="mx-auto mb-10 w-full min-w-0 max-w-5xl px-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-600">
-          our simple process
-        </p>
-        <h2 className="mt-3 mb-6 text-2xl font-semibold text-ink sm:text-3xl lg:text-5xl">How it works</h2>
+        <motion.div
+          variants={itemVariants}
+          initial={reduceMotion ? 'visible' : 'hidden'}
+          whileInView={reduceMotion ? undefined : 'visible'}
+          viewport={CARD_VIEWPORT}
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-600">
+            our simple process
+          </p>
+          <h2 className="mt-3 mb-6 text-2xl font-semibold text-ink sm:text-3xl lg:text-5xl">How it works</h2>
+        </motion.div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROCESS_STEPS.map((step) => (
@@ -58,7 +56,7 @@ export default function ProcessSection() {
                 </div>
               </div>
 
-              <h3 className="text-sm font-semibold text-ink">{step.title}</h3>
+              <h3 className="text-[1.75rem] font-semibold leading-snug text-ink">{step.title}</h3>
               <p className="mt-2 text-sm text-stone-600">{step.text}</p>
             </motion.article>
           ))}
@@ -77,6 +75,6 @@ export default function ProcessSection() {
           </p>
         </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }

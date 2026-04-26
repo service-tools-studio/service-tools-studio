@@ -1,8 +1,10 @@
 'use client';
 import { useState } from 'react';
-import { CONTACT_EMAIL, CALENDLY_URL } from '@/app/constants';
+import { CONTACT_EMAIL, CALENDLY_URL, PRIMARY_CTA_CLASSNAME } from '@/app/constants';
 
 export default function IntakeForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitState, setSubmitState] = useState<'idle' | 'sent' | 'error'>('idle');
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -10,7 +12,7 @@ export default function IntakeForm() {
     website: '',
     needs: '',
     timeline: '',
-    projectType: 'Launch Site (typically $1,000–$1,500)',
+    budget: '$1,000–$1,500',
     // openToRebuild: 'yes',
   });
 
@@ -22,26 +24,45 @@ export default function IntakeForm() {
     setForm((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const subject = encodeURIComponent('New Website Project Inquiry');
-    const body = encodeURIComponent(
-      [
-        `Name: ${form.name}`,
-        `Email: ${form.email}`,
-        `Business: ${form.business}`,
-        `Current website: ${form.website || 'N/A'}`,
-        '',
-        `What you need built:`,
-        `${form.needs}`,
-        '',
-        `Timeline: ${form.timeline || 'Not specified'}`,
-        // `Open to full rebuild: ${form.openToRebuild}`,
-        `Project Type & budget: ${form.projectType || 'Not specified'}`,
-      ].join('\n')
-    );
+    setIsSubmitting(true);
+    setSubmitState('idle');
 
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    try {
+      const res = await fetch('/api/intake', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to send');
+      }
+
+      setSubmitState('sent');
+    } catch {
+      // Fallback to mail client so leads are never blocked.
+      const subject = encodeURIComponent('New Website Project Inquiry');
+      const body = encodeURIComponent(
+        [
+          `Name: ${form.name}`,
+          `Email: ${form.email}`,
+          `Business: ${form.business}`,
+          `Current website: ${form.website || 'N/A'}`,
+          '',
+          `What you need built:`,
+          `${form.needs}`,
+          '',
+          `Timeline: ${form.timeline || 'Not specified'}`,
+          `Budget: ${form.budget || 'Not specified'}`,
+        ].join('\n')
+      );
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      setSubmitState('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (<>
@@ -172,52 +193,43 @@ export default function IntakeForm() {
 
       <div className="md:col-span-1">
         <label className="block text-xs font-medium text-ink/90">
-          Project type & budget
+          What level of investment are you comfortable making to improve your online presence?
           <select
-            name="projectType"
-            value={form.projectType}
+            name="budget"
+            value={form.budget}
             onChange={handleChange}
             className="mt-1 w-full rounded-xl border border-stone-300 bg-white px-3 py-2 text-sm text-ink shadow-sm focus:border-stone-500 focus:outline-none focus:ring-1 focus:ring-stone-500"
           >
-            <option value="one-pager">Launch Site (typically $1,000–$1,500)</option>
-            <option value="structured-build">Business Site (typically $4,000–$8,000)</option>
-            <option value="custom-design">Custom (starting at $12,000)</option>
+            <option value="1000-2500">$1,000 – $2,500</option>
+            <option value="2500-5000">$2,500 – $5,000</option>
+            <option value="5000-8000">$5,000 – $8,000</option>
+            <option value="8000-15000">$8,000 – $15,000+</option>
           </select>
         </label>
-
-        <div className="mt-2 text-xs text-stone-500">
-          <ul>
-            <li>Launch Site = focused page built around one clear CTA.</li>
-            <li>Business Site = multi-CTA site built on a guided layout system.</li>
-            <li>Custom = fully tailored visual system and features from scratch.</li>
-          </ul>
-        </div>
       </div>
 
 
       <div className="md:col-span-2 flex flex-col gap-2 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <button
           type="submit"
-          className="
-    sparkle-btn
-    relative inline-flex items-center justify-center
-    overflow-hidden
-    rounded-full
-    px-6 py-2.5
-    text-sm font-medium text-stone-50
-    shadow-sm
-    transition-all duration-500
-    focus:outline-none focus-visible:ring-2 focus-visible:ring-btn-primary
-  "
+          disabled={isSubmitting}
+          className={PRIMARY_CTA_CLASSNAME}
         >
           <span className="sparkle-layer" aria-hidden />
-          <span className="relative z-10">Get your website plan ✨</span>
+          <span className="relative z-10">
+            {isSubmitting ? 'Sending...' : 'Get your website plan ✨'}
+          </span>
         </button>
 
         <p className="text-xs text-stone-500">
-          This will open an email draft with your answers—no spam, no automated lists.
+          No spam, no automated lists. We'll follow up with a simple next step.
         </p>
       </div>
+      {submitState === 'sent' && (
+        <p className="md:col-span-2 text-sm text-emerald-700">
+          Thanks! Your request was sent. We&apos;ll follow up by email soon.
+        </p>
+      )}
     </form>
 
     {CALENDLY_URL && (

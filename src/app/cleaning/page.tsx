@@ -7,7 +7,13 @@ import Section from '@/components/Section';
 import Services from '@/components/Services';
 import About from '@/components/About';
 import type { Project } from '@/types';
-import { CONTACT_EMAIL, CALENDLY_URL, GOOGLE_REVIEWS_URL, PROJECTS } from '../constants';
+import {
+  CONTACT_EMAIL,
+  CALENDLY_URL,
+  GOOGLE_REVIEWS_URL,
+  PRIMARY_CTA_CLASSNAME,
+  PROJECTS,
+} from '../constants';
 import ProcessSection from '@/components/ProcessSection';
 import IntakeForm from '@/components/IntakeForm';
 import ProjectCard from '@/components/ProjectCard';
@@ -82,10 +88,12 @@ export default function HomePage() {
                   <div className="mt-6 flex w-full flex-wrap gap-3">
                     <a
                       href="/cleaning#intake"
-                      className="sparkle-btn relative inline-flex w-full items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500 sm:w-auto sm:px-6 sm:py-2.5 sm:text-sm"
+                      className={`${PRIMARY_CTA_CLASSNAME} w-full sm:w-auto`}
                     >
-                      <span className="sparkle-layer" />
-                      <span className="relative z-10">See how your site could get more bookings ✨</span>
+                      <span className="sparkle-layer" aria-hidden />
+                      <span className="relative z-10">
+                        See how your site could get more bookings ✨
+                      </span>
                     </a>
                   </div>
                 </div>
