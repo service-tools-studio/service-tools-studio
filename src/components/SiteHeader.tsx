@@ -71,7 +71,7 @@ export default function SiteHeader() {
             >
               <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden">
                 <Image
-                  src="/images/Service Tools 3.svg"
+                  src="/images/Service Tools 3.png"
                   alt="Service Tools Studio logo"
                   width={56}
                   height={56}
