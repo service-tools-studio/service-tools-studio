@@ -1,5 +1,8 @@
+'use client';
+
 import IframePreview from './IframePreview';
 import Link from 'next/link';
+import { PRIMARY_CTA_CLASSNAME } from '@/app/constants';
 import { Project } from '@/types';
 
 export default function ProjectCard({
@@ -16,9 +19,21 @@ export default function ProjectCard({
       <div className="grid md:grid-cols-[1.2fr,1fr]">
         {/* Left: Description */}
         <div className="min-w-0 p-6 md:p-8">
-          <h3 className="text-sm font-semibold text-ink">{project.title}</h3>
+          <div className="flex items-center justify-between gap-3">
+            <h3 className="min-w-0 flex-1 text-base font-semibold leading-snug text-ink">
+              {project.title}
+            </h3>
+            <Link
+              href={href}
+              className={`${PRIMARY_CTA_CLASSNAME} shrink-0 px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm`}
+              aria-label={`Open details for ${project.title}`}
+            >
+              <span className="sparkle-layer" aria-hidden />
+              <span className="relative z-10">View details →</span>
+            </Link>
+          </div>
           {project.subtitle && (
-            <p className="mt-1 text-xs text-stone-500">{project.subtitle}</p>
+            <p className="mt-2 text-xs text-stone-500">{project.subtitle}</p>
           )}
 
           {/* {project.description.map((p, i) => (
@@ -38,16 +53,6 @@ export default function ProjectCard({
               </span>
             ))}
           </div> */}
-
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link
-              href={href}
-              className="sparkle-btn inline-flex items-center justify-center rounded-full bg-stone-900 px-4 py-2 text-xs font-medium text-stone-50 hover:bg-stone-800 transition"
-              aria-label={`Open details for ${project.title}`}
-            >
-              View details →
-            </Link>
-          </div>
         </div>
 
         {/* Right: Visual preview */}

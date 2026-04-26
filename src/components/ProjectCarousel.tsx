@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent } from 'react';
 import Link from 'next/link';
+import { PRIMARY_CTA_CLASSNAME } from '@/app/constants';
 import IframePreview from '@/components/IframePreview';
 import type { Project } from '@/types';
 
@@ -129,10 +130,9 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
                   Case study
                 </p> */}
 
-                <div className="mt-4 flex w-full flex-wrap justify-center gap-3 px-4">
-                  <div className="items-center gap-2">
+                <div className="mt-4 flex w-full items-center justify-between gap-3 px-4">
+                  <div className="min-w-0 flex-1">
                     <h3 className="text-sm font-semibold text-ink">{project.title}</h3>
-
                     {project.subtitle && (
                       <p className="mt-1 text-xs text-stone-500">{project.subtitle}</p>
                     )}
@@ -140,10 +140,11 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
                   {project.slug && (
                     <Link
                       href={detailsHref}
-                      className="sparkle-btn inline-flex items-center justify-center rounded-full bg-stone-900 px-4 py-2 text-xs font-medium text-stone-50 hover:bg-stone-800 transition"
+                      className={`${PRIMARY_CTA_CLASSNAME} shrink-0 px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm`}
                       aria-label={`Open details for ${project.title}`}
                     >
-                      View details →
+                      <span className="sparkle-layer" aria-hidden />
+                      <span className="relative z-10">View details →</span>
                     </Link>
                   )}
                 </div>

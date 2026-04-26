@@ -5,6 +5,10 @@ export const GOOGLE_REVIEWS_URL =
   'https://maps.app.goo.gl/yE2s2Ua4nKS9Dz75A';
 export const CALENDLY_URL =
   'https://calendly.com/service-tools-studio/15-minute-website-intro-call';
+
+/** Primary CTA — teal sparkle (`.sparkle-btn` in globals). Pair with `<span className="sparkle-layer" />` + `<span className="relative z-10">…</span>`. */
+export const PRIMARY_CTA_CLASSNAME =
+  'sparkle-btn relative inline-flex items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-btn-primary sm:px-6 sm:py-3 sm:text-base';
 export const GOLDEN_HOUR_URL = 'https://goldenhourcleaningco.com/residential';
 export const TESS_SITE_URL = 'https://theconsciousmvt.com';
 export const HAW_URL = 'https://structured-build-haw.vercel.app/';
@@ -26,6 +30,24 @@ export const PROJECTS: Project[] = [
     pills: [
       'Custom quote calculator',
       'Booking flow & lead capture',
+      'Custom coded (no templates)',
+      'Mobile-friendly layout',
+      'Deployed to custom domain',
+    ],
+  },
+  {
+    title: 'Odyssey Hauling',
+    slug: 'odyssey-hauling',
+    category: 'custom',
+    subtitle: 'Junk removal and hauling services',
+    liveUrl: "https://odysseyhauling.com",
+    previewTitle: 'Odyssey Hauling website preview',
+    description: [
+      'A conversion-optimized website for a reliable hauling business. The site includes a custom quote calculator and contact form that includes image upload so visitors can easily submit their requests for junk removal and hauling services.',
+    ],
+    pills: [
+      'Custom quote calculator',
+      'Contact form lead capture',
       'Custom coded (no templates)',
       'Mobile-friendly layout',
       'Deployed to custom domain',

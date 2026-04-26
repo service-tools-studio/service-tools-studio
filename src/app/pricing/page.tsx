@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { PRIMARY_CTA_CLASSNAME } from '@/app/constants';
 import PageTopSection from '@/components/PageTopSection';
 
 const TIERS = [
@@ -92,9 +93,9 @@ export default function PricingPage() {
               </ul>
               <Link
                 href={tier.href}
-                className={`mt-6 flex w-full items-center justify-center rounded-full py-2.5 text-sm font-medium transition ${tier.featured
-                  ? 'sparkle-btn relative overflow-hidden text-white shadow-sm'
-                  : 'border border-stone-300 bg-white text-ink hover:border-stone-400'
+                className={`mt-6 w-full text-center ${tier.featured
+                  ? `${PRIMARY_CTA_CLASSNAME} justify-center`
+                  : 'flex items-center justify-center rounded-full border border-stone-300 bg-white py-2.5 text-sm font-medium text-ink transition hover:border-stone-400'
                   }`}
               >
                 {tier.featured ? (
